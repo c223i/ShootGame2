@@ -29,3 +29,5 @@ ShootGame2 的是基于 ShootSourceCode 修改而来的
 
 # ShootGame2 1.0.1 (Beta)
 初始版本
+
+123456789
