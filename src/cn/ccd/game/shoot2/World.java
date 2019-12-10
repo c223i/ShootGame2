@@ -11,11 +11,15 @@ import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -42,6 +46,11 @@ public class World extends JPanel implements Versions, GameLevel {
 
 	/* 运行时间 */
 	private int RunTime = 0;
+
+	/* 创建旋转子弹的控制键，，，，，这个是新增加的功能类 */
+	private boolean revolveKey = false;
+	private RevolveBullet rbullet;// 创建旋转子弹的类
+	private RevolveBullet rbullet1;// 创建旋转子弹的类
 
 	/* 创建游戏内容/对象 */
 	private Sky sky = new Sky();
@@ -305,6 +314,48 @@ public class World extends JPanel implements Versions, GameLevel {
 		}
 
 	}
+	
+	/* 旋转子弹的方法 */
+	public  void revolveBulletAction() {
+		if (revolveKey == true && rbullet == null) {
+			rbullet = new RevolveBullet(WIDTH / 4, HEIGHT / 5 * 4);
+			rbullet1 = new RevolveBullet(WIDTH / 4 * 3, HEIGHT / 5 * 4);
+		}
+		if (revolveKey == true) {
+
+			revolveKey = true;
+//			hero.x = WIDTH / 2; // 这里有个bug
+//			hero.y = HEIGHT / 6 * 5; // 这里有个bug
+			rbullet.step();
+			rbullet1.step();
+
+			for (FlyingObject f : enemies) {
+				if (rbullet.isLife() && f.isLife() && f.hit(rbullet)) {
+					if ((f instanceof Bee)) {// 跳过空投类型
+						continue;
+					}
+					rbullet1.subtractLife();
+					f.goDead();
+
+				}
+				if (rbullet1.isLife() && f.isLife() && f.hit(rbullet1)) {
+					if ((f instanceof Bee)) {// 跳过空投类型
+						continue;
+					}
+					rbullet1.subtractLife();
+					f.goDead();
+				}
+				System.out.println(rbullet.getLife() + "," + rbullet1.getLife());
+			}
+			if (rbullet.getLife() < 1 || rbullet1.getLife() < 1 || rbullet.outOfBounds() || rbullet1.outOfBounds()) {
+
+				rbullet = null;
+				rbullet1 = null;
+				revolveKey = false;
+			}
+		}
+
+	}
 
 	/* 运行核心 */
 	public synchronized void action() {
@@ -390,7 +441,7 @@ public class World extends JPanel implements Versions, GameLevel {
 					protectedCoverBangAction();
 					heroBangAction();
 					checkGamoOvreAction();
-
+					revolveBulletAction();
 				}
 
 				repaint();
@@ -408,6 +459,18 @@ public class World extends JPanel implements Versions, GameLevel {
 		sky.paintObject(g);
 		hero.paintObject(g);
 		protectedCover.paintObject(g);
+		
+		if (rbullet!=null) {
+			try {
+				rbullet.paintObject(g);
+				rbullet1.paintObject(g);
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.err.println("这里出来一个bug，e");
+			}
+
+		}
+
 		for (int i = 0; i < enemies.length; i++) {
 
 			enemies[i].paintObject(g);
@@ -599,6 +662,31 @@ public class World extends JPanel implements Versions, GameLevel {
 		frame.setSize(World.WIDTH + 10, World.HEIGHT);
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
+		
+		/* 在画框里面添加按键事件 */
+		frame.addKeyListener(new KeyListener() {
+
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+//				System.out.println("///////////////////////////////////////");
+				if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+					world.revolveKey = true;
+				}
+
+			}
+		});
 
 		world.action();
 

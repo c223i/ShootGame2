@@ -16,13 +16,13 @@ public class Images {
 	public static BufferedImage pause; // 游戏暂停
 	public static BufferedImage gameOver; // 游戏结束
 	public static BufferedImage[] ProtectedCover; // 英雄机保护罩
-
+	public static BufferedImage revolveb;	//旋转子弹的图片
+	
 	static {
 
 		sky = new BufferedImage[4];
 		for (int i = 0; i < sky.length; i++) {
 			sky[i] = loadImage("bg_" + i + ".jpg");
-			// sky[i] = loadImage("background.png");
 		}
 
 		bullet = new BufferedImage[4];
@@ -55,6 +55,8 @@ public class Images {
 		start = loadImage("start.jpg");
 		pause = loadImage("pause.png");
 		gameOver = loadImage("gameover.jpg");
+		
+		revolveb=loadImage("bom2.png");
 
 	}
 
