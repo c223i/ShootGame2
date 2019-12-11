@@ -34,7 +34,7 @@
      
      在world里添加了一个keyEvent事件
 
-版本修改人：@Laxworld
+修改人：@Laxworld
 
 # ShootGame2 1.0.1 (Beta)
 初始版本
