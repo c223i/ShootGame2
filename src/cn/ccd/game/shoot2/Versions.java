@@ -16,13 +16,13 @@ public interface Versions {
 	public static final String PROJECT = "ShootGame2";// 项目名
 	public static final String EDITION = "Beta";// 版本
 	public static final String VERSIONS = "1.0.2";// 版本号 <<<<<< 改这里
-	public static final String AUTHOR = "吕安兴";// 作者
+	public static final String AUTHOR = "Laxworld";// 作者
 	public static final String COPYRIGHT = "CopyRight (C) 2019";// 版权标志
 
 	public static final String SOURCE_CODE = "ShootSourceCode";// 源码名
 	public static final String SOURCE_CODE_VERSIONS = "2.0.80";// 源码版本
 
-	public static final String CONTENT = "增加了一个旋转子弹功能，调用了keyEvent事件" + "还加了一个保存信息的方法";
+	public static final String CONTENT = "	";//这里是添加的内容
 
 	// 增了加一个修改的信息的保存方法
 	public static void main(String[] args) {

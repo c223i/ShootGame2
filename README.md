@@ -27,6 +27,17 @@
 
      5.子弹火力值+1 (最高5级)
 
+# ShootGame2 1.0.3 (Beta)
+增加功能：
+
+     在world里面添加了一个按键事件
+
+BUG：
+
+     未知
+
+修改人：@Laxworld
+
 # ShootGame2 1.0.2 (Beta)
 增加功能：
 

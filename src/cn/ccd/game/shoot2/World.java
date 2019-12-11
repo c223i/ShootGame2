@@ -12,7 +12,6 @@ import java.awt.Graphics;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
@@ -51,6 +50,10 @@ public class World extends JPanel implements Versions, GameLevel {
 	private boolean revolveKey = false;
 	private RevolveBullet rbullet;// 创建旋转子弹的类
 	private RevolveBullet rbullet1;// 创建旋转子弹的类
+
+	/* 增加一个控制暂停的键 */
+	private boolean pauseKey = false;
+	private boolean startKey = false;
 
 	/* 创建游戏内容/对象 */
 	private Sky sky = new Sky();
@@ -314,9 +317,9 @@ public class World extends JPanel implements Versions, GameLevel {
 		}
 
 	}
-	
+
 	/* 旋转子弹的方法 */
-	public  void revolveBulletAction() {
+	public void revolveBulletAction() {
 		if (revolveKey == true && rbullet == null) {
 			rbullet = new RevolveBullet(WIDTH / 4, HEIGHT / 5 * 4);
 			rbullet1 = new RevolveBullet(WIDTH / 4 * 3, HEIGHT / 5 * 4);
@@ -355,6 +358,25 @@ public class World extends JPanel implements Versions, GameLevel {
 			}
 		}
 
+	}
+
+	/* 暂停键控制方法 */
+	public void pauseKyeAction() {
+		if (pauseKey == true) {
+			state = PAUSE;
+			System.out.println("判断游戏是否暂停" + state);
+			pauseKey = false;
+		}
+		if (startKey == true) {
+			state = RUNNING;
+			System.out.println("判断游戏是否运行" + state);
+			startKey = false;
+		}
+
+	}
+
+	public void startKyeAction() {
+		
 	}
 
 	/* 运行核心 */
@@ -431,8 +453,9 @@ public class World extends JPanel implements Versions, GameLevel {
 
 			public void run() {
 
+				pauseKyeAction();
+				startKyeAction();
 				if (state == RUNNING) {
-
 					enemiesEnterAction();
 					bulletShootAction();
 					stepAction();
@@ -459,8 +482,8 @@ public class World extends JPanel implements Versions, GameLevel {
 		sky.paintObject(g);
 		hero.paintObject(g);
 		protectedCover.paintObject(g);
-		
-		if (rbullet!=null) {
+
+		if (rbullet != null) {
 			try {
 				rbullet.paintObject(g);
 				rbullet1.paintObject(g);
@@ -499,7 +522,7 @@ public class World extends JPanel implements Versions, GameLevel {
 			break;
 
 		}
-		
+
 		if (state == RUNNING) { // 只在游戏运行时显示的内容
 
 			/* 玩家基本信息显示 */
@@ -511,12 +534,12 @@ public class World extends JPanel implements Versions, GameLevel {
 
 			/* 英雄机血条显示 */
 			g.setColor(Color.YELLOW);
-			g.drawString("x " + (hero.getLife() - 1), hero.x + hero.width + 7, hero.y + hero.height + 8);
+			g.drawString("x " + (hero.getLife() - 1), hero.x + hero.width + 8, hero.y + hero.height + 8);
 			g.setColor(Color.WHITE);
 			g.drawRect(hero.x, hero.y + hero.height, hero.width + 3, 8);
-			if (hero.getHp() > 60) {
+			if (hero.getHp() > 100 / 5) {
 				g.setColor(Color.GREEN);
-			} else if (hero.getHp() > 30) {
+			} else if (hero.getHp() > 100 / 3) {
 				g.setColor(Color.YELLOW);
 			} else {
 				g.setColor(Color.RED);
@@ -610,17 +633,17 @@ public class World extends JPanel implements Versions, GameLevel {
 			g.drawString("Author " + AUTHOR, 10, World.HEIGHT - 100);
 			g.drawString(COPYRIGHT, 10, World.HEIGHT - 80);
 			g.drawString("RunTime[" + (RunTime++) + "]", 10, World.HEIGHT - 60);
-			
+
 		}
-		
-		/*显示排行榜*/
+
+		/* 显示排行榜 */
 		if (state == GAME_OVRE) { // 只在游戏结束时显示的内容
 			g.setColor(Color.YELLOW);
-			g.drawString("游戏结束，当前分数 [ " + newScore + " ] ， " +ScoreLeaderboard.getRanking() , 80, 200);
+			g.drawString("游戏结束，当前分数 [ " + newScore + " ] ， " + ScoreLeaderboard.getRanking(), 80, 200);
 			g.drawString("游戏历史排行榜：", 80, 260);
 			int[] tempScore = ScoreLeaderboard.getScore();
 			for (int i = 0; i < tempScore.length; i++) {
-				g.drawString(i+1+":     [  " + tempScore[i] + "  ]", 80, 300+i*50);
+				g.drawString(i + 1 + ":     [  " + tempScore[i] + "  ]", 80, 300 + i * 50);
 			}
 		}
 	}
@@ -630,7 +653,7 @@ public class World extends JPanel implements Versions, GameLevel {
 
 		World world = new World();
 		Scanner scan = new Scanner(System.in);
-		System.out.println("[ "+PROJECT+" ] " + EDITION + "_" + VERSIONS + "\n");
+		System.out.println("[ " + PROJECT + " ] " + EDITION + "_" + VERSIONS + "\n");
 		System.out.println("欢迎体验本游戏");
 		System.out.println("在此声明：本游戏基于" + SOURCE_CODE + "(" + SOURCE_CODE_VERSIONS + ")" + "开发");
 		System.out.println("开发此游戏目的只是为了代码的学习，研究和测试");
@@ -662,7 +685,7 @@ public class World extends JPanel implements Versions, GameLevel {
 		frame.setSize(World.WIDTH + 10, World.HEIGHT);
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
-		
+
 		/* 在画框里面添加按键事件 */
 		frame.addKeyListener(new KeyListener() {
 
@@ -680,9 +703,17 @@ public class World extends JPanel implements Versions, GameLevel {
 
 			@Override
 			public void keyPressed(KeyEvent e) {
-//				System.out.println("///////////////////////////////////////");
+				System.out.println("/////////////" + KeyEvent.VK_SPACE);
 				if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 					world.revolveKey = true;
+				} else if (e.getKeyCode() == KeyEvent.VK_1) {
+					world.pauseKey = true;
+					System.out.println("world.pauseKey:" + world.pauseKey);
+
+				} else if (e.getKeyCode() == KeyEvent.VK_2) {
+					world.startKey = true;
+
+					System.out.println("world.startKey:" + world.startKey);
 				}
 
 			}
