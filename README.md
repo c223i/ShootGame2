@@ -36,7 +36,7 @@
      
      在world里添加了一个keyEvent事件
 
-存在BUG：
+BUG：
 
      未知
 
