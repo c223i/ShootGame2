@@ -1,5 +1,3 @@
-ShootGame2 的是基于 ShootSourceCode 修改而来的
-
 # ShootGame2 1.0.1 版本游戏玩法：
 打开游戏后选择游戏难度，选择好后会弹出游戏窗口点击鼠标即可开始游戏
 
