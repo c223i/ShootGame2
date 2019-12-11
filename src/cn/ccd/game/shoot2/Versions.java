@@ -15,7 +15,7 @@ public interface Versions {
 
 	public static final String PROJECT = "ShootGame2";// 项目名
 	public static final String EDITION = "Beta";// 版本
-	public static final String VERSIONS = "1.0.2";// 版本号 <<<<<< 改这里
+	public static final String VERSIONS = "1.0.3";// 版本号 <<<<<< 改这里
 	public static final String AUTHOR = "Laxworld";// 作者
 	public static final String COPYRIGHT = "CopyRight (C) 2019";// 版权标志
 
@@ -32,7 +32,7 @@ public interface Versions {
 	public static void saveInformation() {
 		try {
 
-			FileOutputStream fos = new FileOutputStream("./editon.txt", true);
+			FileOutputStream fos = new FileOutputStream("./src/cn/ccd/game/shoot2/editon.txt", true);
 			OutputStreamWriter osw = new OutputStreamWriter(fos, "UTF-8");
 			BufferedWriter bw = new BufferedWriter(osw);
 			PrintWriter pw = new PrintWriter(bw, true);
@@ -46,7 +46,7 @@ public interface Versions {
 					"\tSOURCE_CODE_VERSIONS:" + SOURCE_CODE_VERSIONS + "。\r\n" + 
 					"\tCONTENT:\r\n\t\t" + CONTENT+ "。\r\n\r\n";
 					
-			FileInputStream fis = new FileInputStream("./editon.txt");
+			FileInputStream fis = new FileInputStream("./src/cn/ccd/game/shoot2/editon.txt");
 			InputStreamReader isr = new InputStreamReader(fis, "UTF-8");
 			BufferedReader br = new BufferedReader(isr);
 			StringBuilder sb=new StringBuilder();

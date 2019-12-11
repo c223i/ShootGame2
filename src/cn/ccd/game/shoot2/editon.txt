@@ -1,0 +1,23 @@
+	BUMBLE:第1次修改。
+	PROJECT:ShootGame2。
+	EDITION:Beta。
+	VERSIONS:1.0.1。
+	AUTHOR:超人。
+	COPYRIGHT:CopyRight (C) 2019。
+	SOURCE_CODE:ShootSourceCode。
+	SOURCE_CODE_VERSIONS:2.0.80。
+	CONTENT:
+		添加了排行榜，散弹，对象血条，保护罩，子弹伤害等级，子弹等级。
+
+	NUMBLE:第2次修改。
+	PROJECT:ShootGame2。
+	EDITION:Beta。
+	VERSIONS:1.0.2。
+	AUTHOR:吕安兴。
+	COPYRIGHT:CopyRight (C) 2019。
+	SOURCE_CODE:ShootSourceCode。
+	SOURCE_CODE_VERSIONS:2.0.80。
+	CONTENT:
+		增加了一个旋转子弹功能，调用了keyEvent事件还加了一个保存信息的方法。
+
+
