@@ -38,9 +38,11 @@
 
 BUG：
 
-     未知
+     无
 
 修改人：@Laxworld
 
 # ShootGame2 1.0.1 (Beta)
 初始版本
+
+@c223i @Laxworld @heavenlyking
