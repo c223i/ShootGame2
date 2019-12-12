@@ -11,10 +11,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
 import java.util.Arrays;
 import java.util.Random;
-import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.awt.event.KeyEvent;
@@ -23,9 +21,9 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 /** 游戏主类 */
-public class World extends JPanel implements Versions, GameLevel {
+public class World extends JPanel implements Versions {
 
-	private static final long serialVersionUID = 77L; // UID
+	private static final long serialVersionUID = 253934765297834956L; // UID
 
 	/* 全局游戏窗口大小 */
 	public static final int WIDTH = 650;
@@ -62,57 +60,28 @@ public class World extends JPanel implements Versions, GameLevel {
 	private Bullet[] bullet = {};
 	private ProtectedCover protectedCover = new ProtectedCover();
 
-	/* 游戏难度设定方法 */
-	public void setGameModeLevel(int gameModelevel) {
-
-		switch (gameModelevel) {
-
-		case GAME_MODE_LEVEL_1: // 1
-
-			enemiesEnterActionNum = 70; // 敌机刷新率，700毫秒一只
-			bulletShootActionNum = 15; // 玩家子弹发射频率，150秒一发
-			break;
-
-		case GAME_MODE_LEVEL_2: // 2
-
-			enemiesEnterActionNum = 40;
-			bulletShootActionNum = 12;
-			break;
-
-		case GAME_MODE_LEVEL_3: // 3
-
-			enemiesEnterActionNum = 16;
-			bulletShootActionNum = 8;
-			break;
-
-		}
-
-	}
-
 	/* 生成敌机类型 */
 	public FlyingObject generateTheEnemy() {
 
-		Random ran = new Random();
-		int type = ran.nextInt(56);
+		int type = new Random().nextInt(56);
 
 		if (type <= 2) {
-
-			System.out.println("刷出-空投"); // 打转代码--------------------------------------------------
+			
 			return new Bee();
 
 		} else if (type <= 30) {
-			System.out.println("刷出-小敌机");// 打转代码--------------------------------------------------
+
 			return new Airplane();
 
 		} else {
-			System.out.println("刷出-大敌机");// 打转代码--------------------------------------------------
+
 			return new BigAirplane();
 
 		}
 
 	}
 
-	private int enemiesEnterActionNum = 10; // 敌机/空投刷新频率控制(由游戏难度控制)
+	private int enemiesEnterActionNum = 40; // 敌机/空投刷新频率控制
 	private int enemiesEnterActionIndex = 0; // 敌机/空投刷新频率变量
 
 	/* 生成敌人 */
@@ -129,7 +98,7 @@ public class World extends JPanel implements Versions, GameLevel {
 
 	}
 
-	private int bulletShootActionNum = 10; // 子弹刷新频率控制(由游戏难度控制)
+	private int bulletShootActionNum = 12; // 子弹刷新频率控制
 	private int bulletShootActionIndex = 0; // 子弹刷新频率变量
 
 	/* 生成子弹 */
@@ -652,33 +621,9 @@ public class World extends JPanel implements Versions, GameLevel {
 	public static void main(String[] ccd) {
 
 		World world = new World();
-		Scanner scan = new Scanner(System.in);
-		System.out.println("[ " + PROJECT + " ] " + EDITION + "_" + VERSIONS + "\n");
-		System.out.println("欢迎体验本游戏");
-		System.out.println("在此声明：本游戏基于" + SOURCE_CODE + "(" + SOURCE_CODE_VERSIONS + ")" + "开发");
-		System.out.println("开发此游戏目的只是为了代码的学习，研究和测试");
-		System.out.println("在游戏中出现某些未预料的BUG属于正常现象");
-		System.out.println("此版本不是最终版本，但也不代表后续会进行更新，可能随时弃坑\n");
-		System.out.println("请输入数字选择游戏难度 [难度越高敌机越多]");
-		System.out.println("1.【初级难度】");
-		System.out.println("2.【高级难度】");
-		System.out.println("3.【变态难度】");
-		System.out.println("请选择：");
-		int gameMode;
-		do {
-
-			gameMode = scan.nextInt();
-
-			if (gameMode < 1 || gameMode > 3) {
-				System.out.println("输入错误，请重新选择：");
-				continue;
-			}
-			world.setGameModeLevel(gameMode);
-			break;
-
-		} while (true);
-
-		scan.close();
+		
+		Versions.printInfo();
+		
 		JFrame frame = new JFrame();
 		frame.add(world);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -21,3 +21,14 @@
 		增加了一个旋转子弹功能，调用了keyEvent事件还加了一个保存信息的方法。
 
 
+	NUMBLE:第4次修改_@c223i。
+	PROJECT:ShootGame2。
+	EDITION:Beta。
+	VERSIONS:1.0.4。
+	AUTHOR:@c223i @Laxworld @heavenlyking。
+	URL:https://c223i.github.io/ShootGame2/。
+	COPYRIGHT:CopyRight (C) 2019。
+	CONTENT:
+		界面信息调整，去除游戏难度选择，去除打桩代码。
+
+
