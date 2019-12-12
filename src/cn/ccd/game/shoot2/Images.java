@@ -1,11 +1,13 @@
 package cn.ccd.game.shoot2;
 
 import java.awt.image.BufferedImage;
+import java.io.File;
+
 import javax.imageio.ImageIO;
 
 /** 游戏贴图 */
 public class Images {
-
+	
 	public static BufferedImage[] sky; // 背景
 	public static BufferedImage[] bullet; // 英雄机子弹
 	public static BufferedImage[] heros; // 英雄机
@@ -20,51 +22,55 @@ public class Images {
 	
 	static {
 
-		sky = new BufferedImage[4];
+		
+		sky = new BufferedImage[7];
 		for (int i = 0; i < sky.length; i++) {
-			sky[i] = loadImage("bg_" + i + ".jpg");
+			sky[i] = loadImage(new File("./src/cn/ccd/game/shoot2/material/background/bg_" + i + ".jpg"));
 		}
 
 		bullet = new BufferedImage[4];
 		for (int i = 0; i < bullet.length; i++) {
-			bullet[i] = loadImage("bullet" + i + ".png");
+			bullet[i] = loadImage(new File("./src/cn/ccd/game/shoot2/material/bullet/bullet" + i + ".png"));
 		}
-
-		heros = new BufferedImage[] { loadImage("hero0.png"), loadImage("hero1.png"), };
+		
+		heros = new BufferedImage[] { 
+				loadImage(new File("./src/cn/ccd/game/shoot2/material/player/hero0.png")), 
+				loadImage(new File("./src/cn/ccd/game/shoot2/material/player/hero1.png")), 
+		};
 
 		airplanes = new BufferedImage[4];
 		for (int i = 0; i < airplanes.length; i++) {
-			airplanes[i] = loadImage("airplane" + i + ".png");
+			airplanes[i] = loadImage(new File("./src/cn/ccd/game/shoot2/material/Enemy/airplane" + i + ".png"));
 		}
 
 		bigAirplanes = new BufferedImage[3];
 		for (int i = 0; i < bigAirplanes.length; i++) {
-			bigAirplanes[i] = loadImage("bigplane" + i + ".png");
+			bigAirplanes[i] = loadImage(new File("./src/cn/ccd/game/shoot2/material/Enemy/bigplane" + i + ".png"));
 		}
 
 		bees = new BufferedImage[3];
 		for (int i = 0; i < bees.length; i++) {
-			bees[i] = loadImage("bee" + i + ".png");
+			bees[i] = loadImage(new File("./src/cn/ccd/game/shoot2/material/Bee/bee" + i + ".png"));
 		}
 
 		ProtectedCover = new BufferedImage[4];
 		for (int i = 0; i < ProtectedCover.length; i++) {
-			ProtectedCover[i] = loadImage("clean" + i + ".png");
+			ProtectedCover[i] = loadImage(new File("./src/cn/ccd/game/shoot2/material/ProtectedCover/clean" + i + ".png"));
 		}
 
-		start = loadImage("start.jpg");
-		pause = loadImage("pause.png");
-		gameOver = loadImage("gameover.jpg");
+		start = loadImage(new File("./src/cn/ccd/game/shoot2/material/game_state/start_3.jpg"));
+		pause = loadImage(new File("./src/cn/ccd/game/shoot2/material/game_state/pause.png"));
+		gameOver = loadImage(new File("./src/cn/ccd/game/shoot2/material/game_state/gameover.jpg"));
 		
-		revolveb=loadImage("bom2.png");
+		revolveb=loadImage(new File("./src/cn/ccd/game/shoot2/material/Explosion/bom2.png"));
 
 	}
 
-	public static BufferedImage loadImage(String fileName) {
+	public static BufferedImage loadImage(File file) {
 
 		try {
 
-			BufferedImage img = ImageIO.read(FlyingObject.class.getResource(fileName));
+			BufferedImage img = ImageIO.read(file);
 			return img;
 
 		} catch (Exception e) {

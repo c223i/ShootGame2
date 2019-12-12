@@ -17,7 +17,7 @@ public class Sky extends FlyingObject {
 		super(World.WIDTH, World.HEIGHT, 0, 0);
 		this.speed = 1;
 		this.y2 = -this.height;
-		this.type = new Random().nextInt(4);// 随机天空背景贴图(0-3)
+		this.type = new Random().nextInt(7);// 随机天空背景贴图(0-6)
 
 	}
 
