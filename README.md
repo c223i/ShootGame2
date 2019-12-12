@@ -1,4 +1,4 @@
-项目首页: https://c223i.github.io/ShootGame2/
+项目主页: https://c223i.github.io/ShootGame2/
 
 # 游戏说明：
 打开游戏会弹出游戏窗口点击鼠标即可开始游戏
