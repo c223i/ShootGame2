@@ -27,6 +27,8 @@
 
      5.子弹火力值+1 (最高5级)
 
+
+
 # ShootGame2 1.0.4 (Beta)
 修改内容：
 
@@ -44,6 +46,8 @@ BUG：
 
 修改人：@c223i
 
+
+
 # ShootGame2 1.0.3 (Beta)
 修改内容：
 
@@ -54,6 +58,8 @@ BUG：
      未知
 
 修改人：@Laxworld
+
+
 
 # ShootGame2 1.0.2 (Beta)
 修改内容：
@@ -69,12 +75,6 @@ BUG：
      无
 
 修改人：@Laxworld
-
-
-
-
-
-
 
 
 
