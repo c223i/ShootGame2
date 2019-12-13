@@ -16,8 +16,8 @@ public class Bee extends FlyingObject implements Award, Enemy {
 
 		super(60, 103);
 		ranX = new Random().nextInt(2);
-		this.xSpeed = 1;
-		this.ySpeed = 2;
+		this.xSpeed = 2;
+		this.ySpeed = 3;
 		this.awardType = new Random().nextInt(5);// 随机奖励值类型(0-4)
 
 	}
@@ -55,23 +55,33 @@ public class Bee extends FlyingObject implements Award, Enemy {
 
 			case ADD_LIFE:
 
-				this.width = 73;
-				this.height = 67;
-				return Images.bees[1]; // 返回心型贴图
+				this.width = 58;
+				this.height = 54;
+				return Images.bees[1]; // 返回心型贴图(金边)
 
 			case PROTECTED_COVER:
 
-				this.width = 60;
-				this.height = 60;
-				return Images.bees[2]; // 返回保护罩贴图
+				this.width = 64;
+				this.height = 63;
+				return Images.bees[0]; // 返回保护罩贴图
 
 			case BULLRT_LEVEL_UP:
+				
+				this.width = 79;
+				this.height = 50;
+				return Images.bees[3];	// 返回子弹升级贴图
 
 			case HERO_LEVEL_UP:
+				
+				this.width = 79;
+				this.height = 50;
+				return Images.bees[2];	// 返回伤害升级贴图
 
 			case INCREASE_HP:
 
-				return Images.bees[0]; // 返回普通贴图
+				this.width = 58;
+				this.height = 49;
+				return Images.bees[4]; // 返回心型贴图
 
 			}
 

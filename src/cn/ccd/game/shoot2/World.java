@@ -63,13 +63,13 @@ public class World extends JPanel implements Versions {
 	/* 生成敌机类型 */
 	public FlyingObject generateTheEnemy() {
 
-		int type = new Random().nextInt(56);
+		int type = new Random().nextInt(55)+1;
 
-		if (type <= 2) {
+		if (type <= 5) {
 			
 			return new Bee();
 
-		} else if (type <= 30) {
+		} else if (type <= 35) {
 
 			return new Airplane();
 
@@ -607,7 +607,7 @@ public class World extends JPanel implements Versions {
 
 		/* 显示排行榜 */
 		if (state == GAME_OVRE) { // 只在游戏结束时显示的内容
-			g.setColor(Color.YELLOW);
+			g.setColor(Color.DARK_GRAY);
 			g.drawString("游戏结束，当前分数 [ " + newScore + " ] ， " + ScoreLeaderboard.getRanking(), 80, 200);
 			g.drawString("游戏历史排行榜：", 80, 260);
 			int[] tempScore = ScoreLeaderboard.getScore();

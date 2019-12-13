@@ -1,8 +1,9 @@
 项目主页: https://c223i.github.io/ShootGame2/
 
-参与开发人员：@c223i @Laxworld @heavenlyking
+开发人员：@c223i @Laxworld @heavenlyking
 
 # 游戏说明：
+
 打开游戏会弹出游戏窗口点击鼠标即可开始游戏
 
 玩家初始生命值为3,每条生命有100血量值
@@ -39,7 +40,28 @@
 
 
 
+# ShootGame2 1.0.6 (Beta)
+
+修改内容：
+
+     增加新的贴图文件,去除无用贴图
+
+     调整图片的载入方式
+
+     修改空投贴图,游戏开始贴图,暂停贴图,游戏结束贴图
+
+     代码优化调整
+
+已知BUG：
+
+     部分地方的颜色不是很协调
+
+修改人：@c223i
+
+
+
 # ShootGame2 1.0.5 (Beta)
+
 修改内容：
 
      调整贴图文件位置
@@ -59,6 +81,7 @@
 
 
 # ShootGame2 1.0.4 (Beta)
+
 修改内容：
 
      界面信息调整
@@ -78,6 +101,7 @@
 
 
 # ShootGame2 1.0.3 (Beta)
+
 修改内容：
 
      在world里面添加了一个按键事件(暂停和继续游戏)
@@ -91,6 +115,7 @@
 
 
 # ShootGame2 1.0.2 (Beta)
+
 修改内容：
 
      旋转子弹的功能
@@ -108,6 +133,7 @@
 
 
 # ShootGame2 1.0.1 (Beta)
+
 初始版本
 
 @c223i @Laxworld @heavenlyking
