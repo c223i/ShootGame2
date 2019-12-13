@@ -1,5 +1,7 @@
 项目主页: https://c223i.github.io/ShootGame2/
 
+参与开发人员：@c223i @Laxworld @heavenlyking
+
 # 游戏说明：
 打开游戏会弹出游戏窗口点击鼠标即可开始游戏
 
@@ -48,7 +50,7 @@
 
      代码优化调整
 
-BUG：
+已知BUG：
 
      null
 
@@ -67,7 +69,7 @@ BUG：
 
      代码排版优化
 
-BUG：
+已知BUG：
 
      null
 
@@ -80,7 +82,7 @@ BUG：
 
      在world里面添加了一个按键事件(暂停和继续游戏)
 
-BUG：
+已知BUG：
 
      未知
 
@@ -97,7 +99,7 @@ BUG：
      
      在world里添加了一个keyEvent事件
 
-BUG：
+已知BUG：
 
      null
 
