@@ -23,7 +23,7 @@ public class Images {
 	static {
 
 		
-		sky = new BufferedImage[7];
+		sky = new BufferedImage[6];
 		for (int i = 0; i < sky.length; i++) {
 			sky[i] = loadImage(new File("./src/cn/ccd/game/shoot2/material/background/bg_" + i + ".jpg"));
 		}
@@ -48,9 +48,9 @@ public class Images {
 			bigAirplanes[i] = loadImage(new File("./src/cn/ccd/game/shoot2/material/Enemy/bigplane" + i + ".png"));
 		}
 
-		bees = new BufferedImage[3];
+		bees = new BufferedImage[5];
 		for (int i = 0; i < bees.length; i++) {
-			bees[i] = loadImage(new File("./src/cn/ccd/game/shoot2/material/Bee/bee" + i + ".png"));
+			bees[i] = loadImage(new File("./src/cn/ccd/game/shoot2/material/Bee/bee_" + i + ".png"));
 		}
 
 		ProtectedCover = new BufferedImage[4];
@@ -58,9 +58,9 @@ public class Images {
 			ProtectedCover[i] = loadImage(new File("./src/cn/ccd/game/shoot2/material/ProtectedCover/clean" + i + ".png"));
 		}
 
-		start = loadImage(new File("./src/cn/ccd/game/shoot2/material/game_state/start_3.jpg"));
-		pause = loadImage(new File("./src/cn/ccd/game/shoot2/material/game_state/pause.png"));
-		gameOver = loadImage(new File("./src/cn/ccd/game/shoot2/material/game_state/gameover.jpg"));
+		start = loadImage(new File("./src/cn/ccd/game/shoot2/material/game_state/start_1.png"));
+		pause = loadImage(new File("./src/cn/ccd/game/shoot2/material/game_state/pause_1.png"));
+		gameOver = loadImage(new File("./src/cn/ccd/game/shoot2/material/game_state/gameover_1.jpg.png"));
 		
 		revolveb=loadImage(new File("./src/cn/ccd/game/shoot2/material/Explosion/bom2.png"));
 
