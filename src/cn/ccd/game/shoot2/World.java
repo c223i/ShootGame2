@@ -9,6 +9,8 @@ package cn.ccd.game.shoot2;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.util.Arrays;
@@ -22,6 +24,13 @@ import java.awt.event.MouseEvent;
 
 /** 游戏主类 */
 public class World extends JPanel implements Versions {
+	/* 增加音频 */
+	public static PlayMuiseGame playboom = new PlayMuiseGame(Images.SF_audio + "boom.wav");
+	public static PlayMuiseGame playmenu = new PlayMuiseGame(Images.SF_audio + "menu.wav");
+	public static PlayMuiseGame playready = new PlayMuiseGame(Images.SF_audio + "ready.wav");
+	public static PlayMuiseGame playrunning = new PlayMuiseGame(Images.SF_audio + "running3.wav");
+	public static PlayMuiseGame plays = new PlayMuiseGame(Images.SF_audio + "s.wav");
+	public static PlayMuiseGame playshoot = new PlayMuiseGame(Images.SF_audio + "shoot.wav");
 
 	private static final long serialVersionUID = 253934765297834956L; // UID
 
@@ -63,10 +72,10 @@ public class World extends JPanel implements Versions {
 	/* 生成敌机类型 */
 	public FlyingObject generateTheEnemy() {
 
-		int type = new Random().nextInt(55)+1;
+		int type = new Random().nextInt(55) + 1;
 
 		if (type <= 5) {
-			
+
 			return new Bee();
 
 		} else if (type <= 35) {
@@ -110,7 +119,7 @@ public class World extends JPanel implements Versions {
 			FlyingObject[] tempBullet = hero.generateTheBullet();
 			bullet = Arrays.copyOf(bullet, bullet.length + tempBullet.length);
 			System.arraycopy(tempBullet, 0, bullet, bullet.length - tempBullet.length, tempBullet.length);
-
+			playshoot.play2();
 		}
 
 	}
@@ -185,6 +194,10 @@ public class World extends JPanel implements Versions {
 					if (enemies[j] instanceof EnemiesHp) {
 						EnemiesHp tempEnemies = (EnemiesHp) enemies[j];
 						tempEnemies.reduceHp(hero.getLevel());
+						if (tempEnemies.getHp() <= 0) {
+							playboom.play1();
+
+						}
 					}
 
 					if (enemies[j] instanceof Enemy) {
@@ -294,7 +307,7 @@ public class World extends JPanel implements Versions {
 			rbullet1 = new RevolveBullet(WIDTH / 4 * 3, HEIGHT / 5 * 4);
 		}
 		if (revolveKey == true) {
-
+			playmenu.play1();
 			revolveKey = true;
 //			hero.x = WIDTH / 2; // 这里有个bug
 //			hero.y = HEIGHT / 6 * 5; // 这里有个bug
@@ -345,7 +358,7 @@ public class World extends JPanel implements Versions {
 	}
 
 	public void startKyeAction() {
-		
+
 	}
 
 	/* 运行核心 */
@@ -360,6 +373,7 @@ public class World extends JPanel implements Versions {
 				case START:
 
 					state = RUNNING;
+					playrunning.play2();
 					break;
 
 				case GAME_OVRE:
@@ -449,6 +463,7 @@ public class World extends JPanel implements Versions {
 		g.setColor(Color.YELLOW);
 
 		sky.paintObject(g);
+		g.drawImage(Images.bar, WIDTH - 110, HEIGHT - 130, null);
 		hero.paintObject(g);
 		protectedCover.paintObject(g);
 
@@ -621,9 +636,9 @@ public class World extends JPanel implements Versions {
 	public static void main(String[] ccd) {
 
 		World world = new World();
-		
+
 		Versions.printInfo();
-		
+
 		JFrame frame = new JFrame();
 		frame.add(world);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

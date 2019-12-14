@@ -11,16 +11,16 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 
 public interface Versions {
-	public static String NUMBLE = "第4次修改_@c223i";// 修改次数
+	public static String NUMBLE = "第7次修改_@c223i";// 修改次数
 
 	public static final String PROJECT = "ShootGame2";// 项目名
 	public static final String EDITION = "Beta";// 版本
-	public static final String VERSIONS = "1.0.4";// 版本号 <<<<<< 改这里
+	public static final String VERSIONS = "1.0.7";// 版本号 <<<<<< 改这里
 	public static final String AUTHOR = "@c223i @Laxworld @heavenlyking";// 项目参与者
 	public static final String URL = "https://c223i.github.io/ShootGame2/";// 项目地址
 	public static final String COPYRIGHT = "CopyRight (C) 2019";// 版权标志
 
-	public static final String CONTENT = "界面信息调整，去除游戏难度选择，去除打桩代码";// 这里是添加的内容
+	public static final String CONTENT = "增加了音频资料，使游戏变得更加生动";// 这里是添加的内容
 
 	/* 输出版本信息信息展示 */
 	public static void printInfo() {
@@ -40,6 +40,15 @@ public interface Versions {
 		saveInformation();
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public static void saveInformation() {
 		try {
 

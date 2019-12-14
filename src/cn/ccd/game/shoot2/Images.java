@@ -7,7 +7,7 @@ import javax.imageio.ImageIO;
 
 /** 游戏贴图 */
 public class Images {
-	
+
 	public static BufferedImage[] sky; // 背景
 	public static BufferedImage[] bullet; // 英雄机子弹
 	public static BufferedImage[] heros; // 英雄机
@@ -18,11 +18,23 @@ public class Images {
 	public static BufferedImage pause; // 游戏暂停
 	public static BufferedImage gameOver; // 游戏结束
 	public static BufferedImage[] ProtectedCover; // 英雄机保护罩
-	public static BufferedImage revolveb;	//旋转子弹的图片
-	
+	public static BufferedImage revolveb; // 旋转子弹的图片
+	public static BufferedImage bar; // 大炮的图片
+
+	public static final String SF_audio = "./src/cn/ccd/game/shoot2/material/audio/";
+	public static final String SF_background = "./src/cn/ccd/game/shoot2/material/background/";
+	public static final String SF_Bee = "./src/cn/ccd/game/shoot2/material/Bee/";
+	public static final String SF_Boss = "./src/cn/ccd/game/shoot2/material/Boss/";
+	public static final String SF_bullet = "./src/cn/ccd/game/shoot2/material/bullet/";
+	public static final String SF_Enemy = "./src/cn/ccd/game/shoot2/material/Enemy/";
+	public static final String SF_Explosion = "./src/cn/ccd/game/shoot2/material/Explosion/";
+	public static final String SF_game_state = "./src/cn/ccd/game/shoot2/material/game_state/";
+	public static final String SF_Others_Unused = "./src/cn/ccd/game/shoot2/material/Others_Unused/";
+	public static final String SF_player = "./src/cn/ccd/game/shoot2/material/player/";
+	public static final String SF_ProtectedCover = "./src/cn/ccd/game/shoot2/material/ProtectedCover/";
+
 	static {
 
-		
 		sky = new BufferedImage[6];
 		for (int i = 0; i < sky.length; i++) {
 			sky[i] = loadImage(new File("./src/cn/ccd/game/shoot2/material/background/bg_" + i + ".jpg"));
@@ -32,11 +44,9 @@ public class Images {
 		for (int i = 0; i < bullet.length; i++) {
 			bullet[i] = loadImage(new File("./src/cn/ccd/game/shoot2/material/bullet/bullet" + i + ".png"));
 		}
-		
-		heros = new BufferedImage[] { 
-				loadImage(new File("./src/cn/ccd/game/shoot2/material/player/hero0.png")), 
-				loadImage(new File("./src/cn/ccd/game/shoot2/material/player/hero1.png")), 
-		};
+
+		heros = new BufferedImage[] { loadImage(new File("./src/cn/ccd/game/shoot2/material/player/hero0.png")),
+				loadImage(new File("./src/cn/ccd/game/shoot2/material/player/hero1.png")), };
 
 		airplanes = new BufferedImage[4];
 		for (int i = 0; i < airplanes.length; i++) {
@@ -55,14 +65,16 @@ public class Images {
 
 		ProtectedCover = new BufferedImage[4];
 		for (int i = 0; i < ProtectedCover.length; i++) {
-			ProtectedCover[i] = loadImage(new File("./src/cn/ccd/game/shoot2/material/ProtectedCover/clean" + i + ".png"));
+			ProtectedCover[i] = loadImage(
+					new File("./src/cn/ccd/game/shoot2/material/ProtectedCover/clean" + i + ".png"));
 		}
 
 		start = loadImage(new File("./src/cn/ccd/game/shoot2/material/game_state/start_1.png"));
 		pause = loadImage(new File("./src/cn/ccd/game/shoot2/material/game_state/pause_1.png"));
 		gameOver = loadImage(new File("./src/cn/ccd/game/shoot2/material/game_state/gameover_1.jpg.png"));
-		
-		revolveb=loadImage(new File("./src/cn/ccd/game/shoot2/material/Explosion/bom2.png"));
+
+		revolveb = loadImage(new File("./src/cn/ccd/game/shoot2/material/Explosion/bom2.png"));
+		bar = loadImage(new File("./src/cn/ccd/game/shoot2/material/game_state/cannon.png"));
 
 	}
 
