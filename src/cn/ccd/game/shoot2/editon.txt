@@ -32,3 +32,14 @@
 		界面信息调整，去除游戏难度选择，去除打桩代码。
 
 
+	NUMBLE:第5次修改_@c223i。
+	PROJECT:ShootGame2。
+	EDITION:Beta。
+	VERSIONS:1.0.6。
+	AUTHOR:@c223i @Laxworld @heavenlyking。
+	URL:https://c223i.github.io/ShootGame2/。
+	COPYRIGHT:CopyRight (C) 2019。
+	CONTENT:
+		修改内容： 调整贴图文件位置 增加新的贴图文件(部分暂时还未使用) 修改Images.java文件,调整图片的载入方式 代码优化调整。
+
+

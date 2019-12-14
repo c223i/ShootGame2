@@ -9,6 +9,8 @@ package cn.ccd.game.shoot2;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.util.Arrays;
@@ -22,6 +24,15 @@ import java.awt.event.MouseEvent;
 
 /** 游戏主类 */
 public class World extends JPanel implements Versions {
+	/*增加音频*/
+	public static  PlayMuiseGame playboom=new PlayMuiseGame(Images.SF_audio+"boom.wav");
+	public static PlayMuiseGame playmenu=new PlayMuiseGame(Images.SF_audio+"menu.wav");
+	public static PlayMuiseGame playready=new PlayMuiseGame(Images.SF_audio+"ready.wav");
+	public static PlayMuiseGame playrunning=new PlayMuiseGame(Images.SF_audio+"running3.wav");
+	public static PlayMuiseGame plays=new PlayMuiseGame(Images.SF_audio+"s.wav");
+	public static PlayMuiseGame playshoot=new PlayMuiseGame(Images.SF_audio+"shoot.wav");
+	
+	
 
 	private static final long serialVersionUID = 253934765297834956L; // UID
 
@@ -176,11 +187,13 @@ public class World extends JPanel implements Versions {
 
 				if (bullet[i].isLife() && enemies[j].isLife() && enemies[j].hit(bullet[i])) {
 
+					playboom.play2();
 					if ((enemies[j] instanceof Bee)) {// 跳过空投类型
 						continue;
 					}
 
 					bullet[i].goDead();
+					
 
 					if (enemies[j] instanceof EnemiesHp) {
 						EnemiesHp tempEnemies = (EnemiesHp) enemies[j];
@@ -360,6 +373,7 @@ public class World extends JPanel implements Versions {
 				case START:
 
 					state = RUNNING;
+					playrunning.play2();
 					break;
 
 				case GAME_OVRE:
@@ -449,6 +463,7 @@ public class World extends JPanel implements Versions {
 		g.setColor(Color.YELLOW);
 
 		sky.paintObject(g);
+		g.drawImage(Images.bar,WIDTH-110,HEIGHT-130,null);
 		hero.paintObject(g);
 		protectedCover.paintObject(g);
 
