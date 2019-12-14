@@ -1,6 +1,6 @@
 项目主页: https://c223i.github.io/ShootGame2/
 
-开发人员：@c223i @Laxworld @heavenlyking
+开发人员：@c223i @Laxworld @heavenlyking @aiqiner
 
 # 游戏说明：
 
@@ -37,6 +37,19 @@
      4.玩家伤害值+1 (最高4级)
 
      5.子弹火力值+1 (最高5级)
+
+
+# ShootGame2 1.0.7 (Beta)
+
+修改内容：
+
+     增加了音频资料，使游戏变得更加生动
+
+已知BUG：
+
+     unknown
+
+修改人：@Laxworld
 
 
 
@@ -108,7 +121,7 @@
 
 已知BUG：
 
-     未知
+     unknown
 
 修改人：@Laxworld
 
@@ -136,4 +149,4 @@
 
 初始版本
 
-@c223i @Laxworld @heavenlyking
+@c223i @Laxworld @heavenlyking @aiqiner
