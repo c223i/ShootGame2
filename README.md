@@ -39,7 +39,7 @@
      5.子弹火力值+1 (最高5级)
 
 
-# ShootGame2 1.0.7 (Beta)
+# ShootGame2 1.0.0 (Beta 7)
 
 修改内容：
 
@@ -53,7 +53,7 @@
 
 
 
-# ShootGame2 1.0.6 (Beta)
+# ShootGame2 1.0.0 (Beta 6)
 
 修改内容：
 
@@ -73,7 +73,7 @@
 
 
 
-# ShootGame2 1.0.5 (Beta)
+# ShootGame2 1.0.0 (Beta 5)
 
 修改内容：
 
@@ -93,7 +93,7 @@
 
 
 
-# ShootGame2 1.0.4 (Beta)
+# ShootGame2 1.0.0 (Beta 4)
 
 修改内容：
 
@@ -113,7 +113,7 @@
 
 
 
-# ShootGame2 1.0.3 (Beta)
+# ShootGame2 1.0.0 (Beta 3)
 
 修改内容：
 
@@ -127,7 +127,7 @@
 
 
 
-# ShootGame2 1.0.2 (Beta)
+# ShootGame2 1.0.0 (Beta 2)
 
 修改内容：
 
@@ -145,7 +145,7 @@
 
 
 
-# ShootGame2 1.0.1 (Beta)
+# ShootGame2 1.0.0 (Beta 1)
 
 初始版本
 
