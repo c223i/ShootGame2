@@ -1,0 +1,67 @@
+	BUMBLE:第1次修改。
+	PROJECT:ShootGame2。
+	EDITION:Beta。
+	VERSIONS:1.0.1。
+	AUTHOR:超人。
+	COPYRIGHT:CopyRight (C) 2019。
+	SOURCE_CODE:ShootSourceCode。
+	SOURCE_CODE_VERSIONS:2.0.80。
+	CONTENT:
+		添加了排行榜，散弹，对象血条，保护罩，子弹伤害等级，子弹等级。
+
+	NUMBLE:第2次修改。
+	PROJECT:ShootGame2。
+	EDITION:Beta。
+	VERSIONS:1.0.2。
+	AUTHOR:吕安兴。
+	COPYRIGHT:CopyRight (C) 2019。
+	SOURCE_CODE:ShootSourceCode。
+	SOURCE_CODE_VERSIONS:2.0.80。
+	CONTENT:
+		增加了一个旋转子弹功能，调用了keyEvent事件还加了一个保存信息的方法。
+
+
+	NUMBLE:第4次修改_@c223i。
+	PROJECT:ShootGame2。
+	EDITION:Beta。
+	VERSIONS:1.0.4。
+	AUTHOR:@c223i @Laxworld @heavenlyking。
+	URL:https://c223i.github.io/ShootGame2/。
+	COPYRIGHT:CopyRight (C) 2019。
+	CONTENT:
+		界面信息调整，去除游戏难度选择，去除打桩代码。
+
+
+	NUMBLE:第5次修改_@c223i。
+	PROJECT:ShootGame2。
+	EDITION:Beta。
+	VERSIONS:1.0.6。
+	AUTHOR:@c223i @Laxworld @heavenlyking。
+	URL:https://c223i.github.io/ShootGame2/。
+	COPYRIGHT:CopyRight (C) 2019。
+	CONTENT:
+		修改内容： 调整贴图文件位置 增加新的贴图文件(部分暂时还未使用) 修改Images.java文件,调整图片的载入方式 代码优化调整。
+
+
+	NUMBLE:第7次修改_@c223i。
+	PROJECT:ShootGame2。
+	EDITION:Beta。
+	VERSIONS:1.0.7。
+	AUTHOR:@c223i @Laxworld @heavenlyking。
+	URL:https://c223i.github.io/ShootGame2/。
+	COPYRIGHT:CopyRight (C) 2019。
+	CONTENT:
+		增加了音频资料，使游戏变得更加生动。
+
+
+	NUMBLE:第8次修改_@c223i。
+	PROJECT:ShootGame2。
+	EDITION:Beta。
+	VERSIONS:1.0.8。
+	AUTHOR:@c223i @Laxworld @heavenlyking。
+	URL:https://c223i.github.io/ShootGame2/。
+	COPYRIGHT:CopyRight (C) 2019。
+	CONTENT:
+		更改素材存放路径，修改贴图和音频的读取方式。
+
+
