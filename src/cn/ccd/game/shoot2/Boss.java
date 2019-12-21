@@ -17,7 +17,7 @@ public class Boss extends FlyingObject {
 	}
 
 	public void step() {
-		if (y < 10) {
+		if (y < 20) {
 			y += ySpeed;
 		} else {
 			x += xSpeed;

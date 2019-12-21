@@ -738,7 +738,22 @@ public class World extends JPanel implements Versions {
 						g.fillRect(tempBigAirplane.x + 2, tempBigAirplane.y - 10 + 2, tempBigAirplane.getHp(), 3);
 					}
 				}
+				/* boss机血量 */
+				if (boss != null) {
+					if (boss.gethp() != (EnemiesHp.bosshp + 1)) {
+						g.setColor(Color.WHITE);
+						g.drawRect(boss.x, boss.y - 20, EnemiesHp.bosshp + 3, 20);
 
+						if (boss.gethp() > EnemiesHp.bosshp * 2 / 3) {
+							g.setColor(Color.GREEN);
+						} else if (boss.gethp() > EnemiesHp.bosshp / 3) {
+							g.setColor(Color.YELLOW);
+						} else {
+							g.setColor(Color.RED);
+						}
+						g.fillRect(boss.x + 2, boss.y - 20 + 2, boss.gethp(), 17);
+					}
+				}
 			}
 			/* boss */
 			if (boss != null) {
