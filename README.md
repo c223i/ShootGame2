@@ -1,4 +1,4 @@
-项目[主页](https://c223i.github.io/ShootGame2/)
+项目[主页](https://c223i.github.io/ShootGame2/) [开发日志](https://github.com/c223i/ShootGame2/blob/master/Release_Notes.md)
 
 开发人员：[@c223i](https://github.com/c223i) [@Laxworld](https://github.com/Laxworld) [@heavenlyking](https://github.com/heavenlyking) [@aiqiner](https://github.com/aiqiner)
 
