@@ -1,6 +1,4 @@
-项目[主页](https://c223i.github.io/ShootGame2/) [开发日志](https://github.com/c223i/ShootGame2/blob/master/Release_Notes.md)
-
-开发人员：[@c223i](https://github.com/c223i) [@Laxworld](https://github.com/Laxworld) [@heavenlyking](https://github.com/heavenlyking) [@aiqiner](https://github.com/aiqiner)
+[[项目主页]](https://c223i.github.io/ShootGame2/)	[[开发日志]](https://github.com/c223i/ShootGame2/blob/master/Release_Notes.md)
 
 # 游戏说明：
 
@@ -20,23 +18,23 @@
 
 特殊功能：
 
-     游戏中按下[空格]可发射旋转子弹
-     
-     按[1]暂停游戏(非小键盘)
-     
-     按[2]继续游戏(非小键盘)
+	游戏中按下[空格]可发射旋转子弹
+	
+	按[1]暂停游戏(非小键盘)
+	
+	按[2]继续游戏(非小键盘)
 
 当前版本空投奖励内容：
 
-     1.奖励一条生命值
+	1.奖励一条生命值
 
-     2.奖励50点血量值
+	2.奖励50点血量值
 
-     3.奖励一个保护盾
+	3.奖励一个保护盾
 
-     4.玩家伤害值+1 (最高4级)
+	4.玩家伤害值+1 (最高4级)
 
-     5.子弹火力值+1 (最高5级)
+	5.子弹火力值+1 (最高5级)
 
 BGM：
 
@@ -64,7 +62,7 @@ BGM：
 
 
 
-# 再次感谢一起参与开发的小伙伴们
+# 感谢一起参与开发的小伙伴们
 
 [@c223i](https://github.com/c223i)
 
