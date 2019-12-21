@@ -70,6 +70,4 @@
 
 没有它们就没有现在的[[ShootGame2](https://c223i.github.io/ShootGame2/)]
 
-欢迎访问我们的[[项目主页](https://c223i.github.io/ShootGame2/)]
-
-以及我们的小程序[[开发日志]](https://github.com/c223i/ShootGame2/blob/master/Release_Notes.md)
+欢迎访问我们的[[项目主页](https://c223i.github.io/ShootGame2/)],以及我们的小程序[[开发日志]](https://github.com/c223i/ShootGame2/blob/master/Release_Notes.md)

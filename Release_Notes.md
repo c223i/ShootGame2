@@ -4,13 +4,13 @@
 
 修改内容：
 
-	(测试) 增加时间显示，
+	(测试) 增加时间显示
 
-	(测试) 增加boss对象，现在可以打boss了
+	(测试) 增加boss对象,现在可以打boss了
 
 	(测试) 增加boss子弹功能
 
-	(测试) 增加boss移动方法，子弹的的射击方法与碰撞效果
+	(测试) 增加boss移动方法,子弹的的射击方法与碰撞效果
 
 已知BUG：
 
@@ -26,7 +26,7 @@
 
 修改内容：
 
-	1.更新音频素材，使用全新音频 (缺点是使游戏容量变大)：
+	1.更新音频素材,使用全新音频 (缺点是使游戏容量变大)：
 
 		[游戏开始]
 		game_start_1
@@ -72,7 +72,7 @@
 
 修改内容：
 
-	更改素材存放路径，修改贴图和音频的读取方式
+	更改素材存放路径,修改贴图和音频的读取方式
 
 	调整优化部分代码
 
@@ -90,7 +90,7 @@
 
 修改内容：
 
-	增加了音频资料，使游戏变得更加生动
+	增加了音频资料,使游戏变得更加生动
 
 已知BUG：
 
@@ -194,4 +194,4 @@
 
 初始版本
 
-开发人员：[@c223i](https://github.com/c223i) [@Laxworld](https://github.com/Laxworld) [@heavenlyking](https://github.com/heavenlyking) [@aiqiner](https://github.com/aiqiner)
+一起参与开发的小伙伴们：[@c223i](https://github.com/c223i) [@Laxworld](https://github.com/Laxworld) [@heavenlyking](https://github.com/heavenlyking) [@aiqiner](https://github.com/aiqiner)
