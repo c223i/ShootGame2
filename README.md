@@ -68,7 +68,7 @@
 
 [@aiqiner](https://github.com/aiqiner)
 
-没有它们就没有 [[ShootGame2](https://c223i.github.io/ShootGame2/)]
+没有它们就没有现在的[[ShootGame2](https://c223i.github.io/ShootGame2/)]
 
 欢迎访问我们的[[项目主页](https://c223i.github.io/ShootGame2/)]
 
