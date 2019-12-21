@@ -25,33 +25,33 @@
 
 	1.更新音频素材，使用全新音频 (缺点是使游戏容量变大)：
 
-		游戏开始
-			game_start_1
-			game_start_2
+		[游戏开始]
+		game_start_1
+		game_start_2
 
-		游戏中
-			game_run_1
-			game_run_2
-			game_run_3
-			game_run_4
-			game_run_5
-			game_run_6
+		[游戏中]
+		game_run_1
+		game_run_2
+		game_run_3
+		game_run_4
+		game_run_5
+		game_run_6
 
-		Boss
-			game_boss_1
-			game_boss_2
+		[Boss]
+		game_boss_1
+		game_boss_2
 
-		游戏结束
-			game_over_1
-			game_over_2
-			game_over_3
+		[游戏结束]
+		game_over_1
+		game_over_2
+		game_over_3
 
-		奖励音效
-			game_award_1U
-			game_award_1
+		[奖励音效]
+		game_award_1U
+		game_award_1
 
-		其他/暂未使用的
-			game_other_1
+		[其他/暂未使用的]
+		game_other_1
 
 	2.重写音频功能类并优化测试
 
