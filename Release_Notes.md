@@ -1,7 +1,3 @@
-项目[主页](https://c223i.github.io/ShootGame2/)
-
-开发人员：[@c223i](https://github.com/c223i) [@Laxworld](https://github.com/Laxworld) [@heavenlyking](https://github.com/heavenlyking) [@aiqiner](https://github.com/aiqiner)
-
 # ShootGame2 1.0.0 (Beta 9)
 
 修改内容：
