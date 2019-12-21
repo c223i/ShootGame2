@@ -36,7 +36,7 @@ public abstract class FlyingObject {
 
 		this.width = width;
 		this.height = height;
-		this.x = new Random().nextInt(World.WIDTH - this.width - 2) + 1;
+		this.x = new Random().nextInt(World.WIDTH - this.width - 10) + 5;
 		this.y = -this.height;
 
 	}

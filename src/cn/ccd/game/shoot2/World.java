@@ -13,6 +13,7 @@ import java.awt.Graphics;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -20,20 +21,12 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.text.SimpleDateFormat;
 
 /** 游戏主类 */
 public class World extends JPanel implements Versions {
-	
-	private static final long serialVersionUID = 253934765297834956L; // UID
-	
-	/* 增加音频 */
-	public static PlayMuiseGame playboom = new PlayMuiseGame("boom.wav");
-	public static PlayMuiseGame playmenu = new PlayMuiseGame("menu.wav");
-	public static PlayMuiseGame playready = new PlayMuiseGame("ready.wav");
-	public static PlayMuiseGame playrunning = new PlayMuiseGame("running3.wav");
-	public static PlayMuiseGame plays = new PlayMuiseGame("s.wav");
-	public static PlayMuiseGame playshoot = new PlayMuiseGame("shoot.wav");
 
+	private static final long serialVersionUID = 253934765297834956L; // UID
 
 	/* 全局游戏窗口大小 */
 	public static final int WIDTH = 650;
@@ -69,6 +62,11 @@ public class World extends JPanel implements Versions {
 	private FlyingObject[] enemies = {};
 	private Bullet[] bullet = {};
 	private ProtectedCover protectedCover = new ProtectedCover();
+
+	/* 创建boss机内容 */
+	private BossBullet[] bossbullet = {};
+	private Boss boss;
+	private boolean bossflag = true;
 
 	/* 生成敌机类型 */
 	public FlyingObject generateTheEnemy() {
@@ -120,7 +118,7 @@ public class World extends JPanel implements Versions {
 			FlyingObject[] tempBullet = hero.generateTheBullet();
 			bullet = Arrays.copyOf(bullet, bullet.length + tempBullet.length);
 			System.arraycopy(tempBullet, 0, bullet, bullet.length - tempBullet.length, tempBullet.length);
-			playshoot.play2();
+
 		}
 
 	}
@@ -195,10 +193,6 @@ public class World extends JPanel implements Versions {
 					if (enemies[j] instanceof EnemiesHp) {
 						EnemiesHp tempEnemies = (EnemiesHp) enemies[j];
 						tempEnemies.reduceHp(hero.getLevel());
-						if (tempEnemies.getHp() <= 0) {
-							playboom.play1();
-
-						}
 					}
 
 					if (enemies[j] instanceof Enemy) {
@@ -249,19 +243,24 @@ public class World extends JPanel implements Versions {
 
 					switch (temp.getAwardType()) {
 					case Award.ADD_LIFE:
+						Audio.getAudioMapLoop("a1UP").play();
 						hero.addLife();
 						return;
 					case Award.BULLRT_LEVEL_UP:
+						Audio.getAudioMapLoop("a1").play();
 						hero.addFireMode();
 						return;
 					case Award.PROTECTED_COVER:
+						Audio.getAudioMapLoop("a1").play();
 						hero.addProtectedCover();// 奖励保护罩能量值
 						protectedCover.restartProtectedCover();// 开启保护罩
 						return;
 					case Award.HERO_LEVEL_UP:
+						Audio.getAudioMapLoop("a1").play();
 						hero.addLevel();
 						return;
 					case Award.INCREASE_HP:
+						Audio.getAudioMapLoop("a1").play();
 						hero.addHp();
 						return;
 					}
@@ -308,7 +307,6 @@ public class World extends JPanel implements Versions {
 			rbullet1 = new RevolveBullet(WIDTH / 4 * 3, HEIGHT / 5 * 4);
 		}
 		if (revolveKey == true) {
-			playmenu.play1();
 			revolveKey = true;
 //			hero.x = WIDTH / 2; // 这里有个bug
 //			hero.y = HEIGHT / 6 * 5; // 这里有个bug
@@ -362,6 +360,130 @@ public class World extends JPanel implements Versions {
 
 	}
 
+	boolean gameRunAudioPlayState = false;
+	int lastState = -1;
+	int START_Audio = -1;
+	int RUNNING_Audio = -1;
+	int GAME_OVRE_Audio = 1;
+
+	/* 音效 */
+	public void playAudio() {
+
+		if (state != lastState) {
+			if (state == START) {
+				Audio.getAudioMapLoop("o" + GAME_OVRE_Audio).stop();
+				int temp = new Random().nextInt(2) + 1;
+				Audio.getAudioMapLoop("s" + temp).loop();
+				START_Audio = temp;
+			} else if (state == RUNNING) {
+				Audio.getAudioMapLoop("s" + START_Audio).stop();
+				Audio.getAudioMapLoop("shoot").loop();
+
+				if (gameRunAudioPlayState == false) {
+					gameRunAudioPlayState = true;
+					int temp = new Random().nextInt(6) + 1;
+					Audio.getAudioMapLoop("r" + temp).loop();
+					RUNNING_Audio = temp;
+				}
+			} else if (state == PAUSE) {
+				Audio.getAudioMapLoop("shoot").stop();
+			} else {
+				Audio.getAudioMapLoop("shoot").stop();
+				gameRunAudioPlayState = false;
+				Audio.getAudioMapLoop("r" + RUNNING_Audio).stop();
+				int temp = new Random().nextInt(3) + 1;
+				Audio.getAudioMapLoop("o" + temp).play();
+				GAME_OVRE_Audio = temp;
+			}
+			lastState = state;
+		}
+
+	}
+
+	/* 实现boss出现 */
+	private int bossbulletAction = 0;
+	int index = 0;
+
+	public void bossAction() {
+		/* 生成boss对象 */
+		if (bossflag) {
+			index++;
+			if (index % 100 == 0) {
+				boss = new Boss();
+				bossflag = false;
+				boss.shoot();
+				System.out.println("生成boss");
+				boss.gethp();
+			}
+		}
+
+		/* boss子弹入场 */
+
+		if (boss != null) {
+			bossbulletAction++;
+			if (bossbulletAction % 250 == 0) {
+				bossbullet = boss.shoot();
+			}
+
+			/* boss子弹与英雄机子弹碰撞检测 */
+
+			boss.shoot();
+			if (boss.gethp() <= 0) {
+				boss = null;
+				bossflag = true;
+			}
+			for (BossBullet b1 : bossbullet) {
+				b1.step();
+				for (Bullet b2 : bullet) {
+					if (b1.isLife() && b2.isLife() && b1.hit(b2)) {
+						b2.goDead();
+						b1.goDead();
+					}
+				}
+			}
+
+			/* boss与英雄机碰撞检测 */
+			if (boss.isLife() && hero.isLife() && hero.hit(boss)) {
+				if (!protectedCover.isLife()) { // 判断撞到时是否有保护罩保护，如果没有则执行扣血操作
+					hero.subtractHp();// 扣血
+					hero.subtractHp();
+					hero.subtractFireMode();// 将开火模式降级
+					hero.subtractLevel();// 将伤害等级降级
+					boss.subtracthp();
+				}
+			}
+
+			/* boos子弹与英雄机碰撞检测 */
+
+			for (BossBullet b2 : bossbullet) {
+				if (b2.isLife() && hero.isLife() && hero.hit(b2)) {
+					if (!protectedCover.isLife()) { // 判断撞到时是否有保护罩保护，如果没有则执行扣血操作
+						hero.subtractHp();// 扣血
+						hero.subtractHp();
+						hero.subtractFireMode();// 将开火模式降级
+						hero.subtractLevel();// 将伤害等级降级
+					}
+					b2.goDead();
+				}
+			}
+
+			/* boss与英雄机子弹碰撞检测 */
+			boss.step();
+			boss.shoot();
+			if (boss.gethp() <= 0) {
+				boss = null;
+				bossflag = true;
+			}
+			for (Bullet b : bullet) {
+				if (b.isLife() && boss.isLife() && boss.hit(b)) {
+					boss.subtracthp();
+					b.goDead();
+				}
+			}
+		}
+
+	}
+
 	/* 运行核心 */
 	public synchronized void action() {
 
@@ -374,7 +496,6 @@ public class World extends JPanel implements Versions {
 				case START:
 
 					state = RUNNING;
-					playrunning.play2();
 					break;
 
 				case GAME_OVRE:
@@ -439,6 +560,8 @@ public class World extends JPanel implements Versions {
 
 				pauseKyeAction();
 				startKyeAction();
+				playAudio();
+
 				if (state == RUNNING) {
 					enemiesEnterAction();
 					bulletShootAction();
@@ -449,6 +572,8 @@ public class World extends JPanel implements Versions {
 					heroBangAction();
 					checkGamoOvreAction();
 					revolveBulletAction();
+
+					bossAction();
 				}
 
 				repaint();
@@ -509,6 +634,10 @@ public class World extends JPanel implements Versions {
 		}
 
 		if (state == RUNNING) { // 只在游戏运行时显示的内容
+
+			g.setColor(Color.YELLOW);
+			g.drawString("时间：[  " + new SimpleDateFormat("HH : mm : ss").format(new Date()) + "  ]", World.WIDTH - 130,
+					20);
 
 			/* 玩家基本信息显示 */
 			g.setColor(Color.YELLOW);
@@ -609,8 +738,16 @@ public class World extends JPanel implements Versions {
 						g.fillRect(tempBigAirplane.x + 2, tempBigAirplane.y - 10 + 2, tempBigAirplane.getHp(), 3);
 					}
 				}
-			}
 
+			}
+			/* boss */
+			if (boss != null) {
+				boss.paintObject(g);
+				System.out.println("画boss");
+				for (BossBullet b : bossbullet) {
+					b.paintObject(g);
+				}
+			}
 			/* 游戏信息显示 */
 			g.setColor(Color.YELLOW);
 			g.drawString(PROJECT + " ( " + EDITION + " )", 10, World.HEIGHT - 140);

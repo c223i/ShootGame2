@@ -65,3 +65,14 @@
 		更改素材存放路径，修改贴图和音频的读取方式。
 
 
+	NUMBLE:第9次修改_@c223i。
+	PROJECT:ShootGame2。
+	EDITION:Beta 9。
+	VERSIONS:1.0.0。
+	AUTHOR:@c223i @Laxworld @heavenlyking @aiqiner。
+	URL:https://c223i.github.io/ShootGame2/。
+	COPYRIGHT:CopyRight (C) 2019。
+	CONTENT:
+		增加时间显示，还增加boss及boss子弹功能类以及boss移动方法子弹的的射击方法与碰撞效果，还利用状态的控制音乐的新功能实现。改变以往音乐实现的bug。
+
+

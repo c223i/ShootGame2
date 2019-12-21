@@ -11,16 +11,16 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 
 public interface Versions {
-	public static String NUMBLE = "第8次修改_@c223i";// 修改次数
+	public static String NUMBLE = "第9次修改_@c223i";// 修改次数
 
 	public static final String PROJECT = "ShootGame2";// 项目名
-	public static final String EDITION = "Beta 8";// 版本 <<<<<< 改这里
+	public static final String EDITION = "Beta 9";// 版本 <<<<<< 改这里
 	public static final String VERSIONS = "1.0.0";// 版本号
 	public static final String AUTHOR = "@c223i @Laxworld @heavenlyking @aiqiner";// 项目参与者
 	public static final String URL = "https://c223i.github.io/ShootGame2/";// 项目地址
 	public static final String COPYRIGHT = "CopyRight (C) 2019";// 版权标志
 
-	public static final String CONTENT = "更改素材存放路径，修改贴图和音频的读取方式";// 这里是添加的内容
+	public static final String CONTENT = "增加时间显示，还增加boss及boss子弹功能类以及boss移动方法子弹的的射击方法与碰撞效果，还利用状态的控制音乐的新功能实现。改变以往音乐实现的bug";// 这里是添加的内容
 
 	/* 输出版本信息信息展示 */
 	public static void printInfo() {

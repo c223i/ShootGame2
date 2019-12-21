@@ -19,7 +19,8 @@ public class Images {
 	public static BufferedImage[] ProtectedCover; // 英雄机保护罩
 	public static BufferedImage revolveb; // 旋转子弹的图片
 	public static BufferedImage bar; // 大炮的图片
-
+	public static BufferedImage boss;//boss
+	public static BufferedImage bossbullet;//boss子弹
 	static {
 
 		sky = new BufferedImage[6];
@@ -63,7 +64,9 @@ public class Images {
 
 		revolveb = loadImage("bom2.png");
 		bar = loadImage("cannon.png");
-
+		
+		boss=loadImage("boss_1.png");
+		bossbullet=loadImage("bossbullet.png");
 	}
 
 	public static BufferedImage loadImage(String fileName) {
