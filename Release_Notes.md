@@ -1,5 +1,7 @@
 # ShootGame2 1.0.0 (Beta 10)
 
+[@Laxworld](https://github.com/Laxworld) [@aiqiner](https://github.com/aiqiner)
+
 修改内容：
 
 	(测试) 增加时间显示，
@@ -16,10 +18,11 @@
 
 	Boss一死会出现线程崩溃
 
-修改人：[@Laxworld](https://github.com/Laxworld) [@aiqiner](https://github.com/aiqiner)
 
 
 # ShootGame2 1.0.0 (Beta 9)
+
+[@c223i](https://github.com/c223i) [@Laxworld](https://github.com/Laxworld)
 
 修改内容：
 
@@ -61,11 +64,11 @@
 
 	null
 
-修改人：[@c223i](https://github.com/c223i) [@Laxworld](https://github.com/Laxworld)
-
 
 
 # ShootGame2 1.0.0 (Beta 8)
+
+[@c223i](https://github.com/c223i)
 
 修改内容：
 
@@ -79,11 +82,11 @@
 
 	null
 
-修改人：[@c223i](https://github.com/c223i)
-
 
 
 # ShootGame2 1.0.0 (Beta 7)
+
+[@Laxworld](https://github.com/Laxworld)
 
 修改内容：
 
@@ -93,11 +96,11 @@
 
 	unknown
 
-修改人：[@Laxworld](https://github.com/Laxworld)
-
 
 
 # ShootGame2 1.0.0 (Beta 6)
+
+[@c223i](https://github.com/c223i)
 
 修改内容：
 
@@ -113,11 +116,11 @@
 
 	部分地方的颜色不是很协调
 
-修改人：[@c223i](https://github.com/c223i)
-
 
 
 # ShootGame2 1.0.0 (Beta 5)
+
+[@c223i](https://github.com/c223i)
 
 修改内容：
 
@@ -133,11 +136,11 @@
 
 	null
 
-修改人：[@c223i](https://github.com/c223i)
-
 
 
 # ShootGame2 1.0.0 (Beta 4)
+
+[@c223i](https://github.com/c223i)
 
 修改内容：
 
@@ -153,11 +156,11 @@
 
 	null
 
-修改人：[@c223i](https://github.com/c223i)
-
 
 
 # ShootGame2 1.0.0 (Beta 3)
+
+[@Laxworld](https://github.com/Laxworld)
 
 修改内容：
 
@@ -167,11 +170,11 @@
 
 	unknown
 
-修改人：[@Laxworld](https://github.com/Laxworld)
-
 
 
 # ShootGame2 1.0.0 (Beta 2)
+
+[@Laxworld](https://github.com/Laxworld)
 
 修改内容：
 
@@ -184,8 +187,6 @@
 已知BUG：
 
 	null
-
-修改人：[@Laxworld](https://github.com/Laxworld)
 
 
 
