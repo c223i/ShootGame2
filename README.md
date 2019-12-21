@@ -1,6 +1,6 @@
-项目主页: https://c223i.github.io/ShootGame2/
+项目[主页](https://c223i.github.io/ShootGame2/)
 
-开发人员：@c223i @Laxworld @heavenlyking @aiqiner
+开发人员：[@c223i](https://github.com/c223i) [@Laxworld](https://github.com/Laxworld) [@heavenlyking](https://github.com/heavenlyking) [@aiqiner](https://github.com/aiqiner)
 
 # 游戏说明：
 
@@ -38,133 +38,40 @@
 
      5.子弹火力值+1 (最高5级)
 
+BGM：
 
-# ShootGame2 1.0.0 (Beta 8)
+	game_start_1	--->	Laura Shigihara - Brainiac Maniac
+	game_start_2	--->	乐石涯音频 - 保卫萝卜2-极地主题曲0904
 
-修改内容：
+	game_run_1	--->	Laura Shigihara - Ultimate Battle
+	game_run_2	--->	坂元信也,藤尾敦 - AFTER SIDE ~ 地獄のレクイエム
+	game_run_3	--->	坂元信也,藤尾敦 - BEFORE SIDE ~ ジャッカルのテーマ
+	game_run_4	--->	前沢秀憲 - 密林の戦い
+	game_run_5	--->	前沢秀憲 - 炎の要塞
+	game_run_6	--->	水谷郁,山西浩一 - ステージ1
 
-     更改素材存放路径，修改贴图和音频的读取方式
+	game_boss_1	--->	坂元信也,藤尾敦 - BOSS BATTLE ~ ボス戦
+	game_boss_2	--->	前沢秀憲 - MASSACRE MOUNTAIN
 
-     调整优化部分代码
+	game_over_1	--->	近藤浩治 - ゲームオーバー (スーパーマリオブラザーズ効果音)
+	game_over_2	--->	近藤浩治 - プレイヤーダウン (スーパーマリオブラザーズ効果音)
+	game_over_3	--->	前沢秀憲 - ゲーム・オーバー
 
-     调整版本号显示方式
+	game_award_1UP --->	近藤浩治 - 1UP (スーパーマリオブラザーズ効果音)
+	game_award_1	--->	近藤浩治 - スーパーマリオに変身したとき (スーパーマリオブラザーズ効果音)
 
-已知BUG：
+	game_other_1	--->	澤和雄,平沢道也 - びっくり熱血新記録!はるかなる金メダル：：店 (買い物)
 
-     null
 
-修改人：@c23i
 
+# 再次感谢一起参与开发的小伙伴们
 
+[@c223i](https://github.com/c223i)
 
-# ShootGame2 1.0.0 (Beta 7)
+[@Laxworld](https://github.com/Laxworld)
 
-修改内容：
+[@heavenlyking](https://github.com/heavenlyking)
 
-     增加了音频资料，使游戏变得更加生动
+[@aiqiner](https://github.com/aiqiner)
 
-已知BUG：
-
-     unknown
-
-修改人：@Laxworld
-
-
-
-# ShootGame2 1.0.0 (Beta 6)
-
-修改内容：
-
-     增加新的贴图文件,去除无用贴图
-
-     调整图片的载入方式
-
-     修改空投贴图,游戏开始贴图,暂停贴图,游戏结束贴图
-
-     代码优化调整
-
-已知BUG：
-
-     部分地方的颜色不是很协调
-
-修改人：@c223i
-
-
-
-# ShootGame2 1.0.0 (Beta 5)
-
-修改内容：
-
-     调整贴图文件位置
-
-     增加新的贴图文件(部分暂时还未使用)
-
-     修改Images.java文件,调整图片的载入方式
-
-     代码优化调整
-
-已知BUG：
-
-     null
-
-修改人：@c223i
-
-
-
-# ShootGame2 1.0.0 (Beta 4)
-
-修改内容：
-
-     界面信息调整
-
-     去除游戏难度选择
-
-     去除部分测试代码
-
-     代码排版优化
-
-已知BUG：
-
-     null
-
-修改人：@c223i
-
-
-
-# ShootGame2 1.0.0 (Beta 3)
-
-修改内容：
-
-     在world里面添加了一个按键事件(暂停和继续游戏)
-
-已知BUG：
-
-     unknown
-
-修改人：@Laxworld
-
-
-
-# ShootGame2 1.0.0 (Beta 2)
-
-修改内容：
-
-     旋转子弹的功能
-     
-     存修改的信息文件
-     
-     在world里添加了一个keyEvent事件
-
-已知BUG：
-
-     null
-
-修改人：@Laxworld
-
-
-
-# ShootGame2 1.0.0 (Beta 1)
-
-初始版本
-
-@c223i @Laxworld @heavenlyking @aiqiner
+没有它们就没有[ShootGame2](https://c223i.github.io/ShootGame2/)
