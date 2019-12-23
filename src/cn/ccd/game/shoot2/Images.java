@@ -23,6 +23,15 @@ public class Images {
 	public static BufferedImage bossbullet;//boss子弹
 	public static BufferedImage spaceship;
 	public static BufferedImage[] spaceshipBullet;
+	
+	//状态信息
+	public static BufferedImage playerState_LIFE;
+	public static BufferedImage playerState_PROTECTED_COVER;
+	public static BufferedImage playerState_BULLRT_LEVEL;
+	public static BufferedImage playerState_HERO_LEVEL;
+	public static BufferedImage playerState_INCREASE_HP;
+	
+	
 	static {
 
 		sky = new BufferedImage[6];
@@ -70,7 +79,17 @@ public class Images {
 		boss=loadImage("boss_1.png");
 		bossbullet=loadImage("bossbullet.png");
 		spaceship=loadImage("召唤宇宙飞船.png");
-		spaceshipBullet=new BufferedImage[]{loadImage("导弹.png"),loadImage("导弹2.png")};
+		spaceshipBullet=new BufferedImage[]{
+				loadImage("导弹.png"),
+				loadImage("导弹2.png")
+		};
+		
+		playerState_LIFE = loadImage("LIFE.png");
+		playerState_PROTECTED_COVER = loadImage("PROTECTED_COVER.png");
+		playerState_BULLRT_LEVEL = loadImage("BULLRT_LEVEL.png");
+		playerState_HERO_LEVEL = loadImage("HERO_LEVEL.png");
+		playerState_INCREASE_HP = loadImage("INCREASE_HP.png");
+		
 	}
 
 	public static BufferedImage loadImage(String fileName) {

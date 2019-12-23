@@ -1,4 +1,4 @@
-# 游戏说明 1.0.0 (Beta 11)：
+# 游戏说明 1.0.0 (Beta 12)：
 
 打开游戏会弹出游戏窗口点击鼠标即可开始游戏
 
@@ -12,7 +12,7 @@
 
 玩家界面有玩家的基本信息提示及游戏版本信息等......
 
-【当前版本空投奖励内容】：
+# 【当前版本空投奖励内容】：
 
 	1.奖励一条生命值
 
@@ -24,7 +24,7 @@
 
 	5.子弹火力值+1 (最高5级)
 
-【特殊功能】：
+# 【特殊功能】：
 
 	游戏中按下[空格]可发射旋转子弹
 	
@@ -34,7 +34,7 @@
 
 	按组合键[ctrl + shift + p] 可以召唤宇宙联盟神舰助阵 (不是我起的名字)
 
-【 BGM 】：
+# 【 BGM 】：
 
 	game_start_1	Laura Shigihara - Brainiac Maniac
 	game_start_2	乐石涯音频 - 保卫萝卜2-极地主题曲0904
@@ -60,7 +60,7 @@
 
 
 
-# 感谢一起参与开发的小伙伴们
+## 感谢一起参与开发的小伙伴们
 
 [@c223i](https://github.com/c223i)
 
@@ -72,4 +72,12 @@
 
 没有它们就没有现在的[[ShootGame2](https://c223i.github.io/ShootGame2/)]
 
-欢迎访问我们的[[项目主页](https://c223i.github.io/ShootGame2/)],以及我们的小程序[[开发日志]](https://github.com/c223i/ShootGame2/blob/master/Release_Notes.md)
+欢迎大家访问我们的[[项目主页](https://c223i.github.io/ShootGame2/)]
+
+如果有兴趣,可以查看我们的[[开发日志]](https://github.com/c223i/ShootGame2/blob/master/Release_Notes.md),顺便可以给我们提供一点建议
+
+目前,项目中细微的修改我们不会更新版本号,所以不会写入到开发日志中,如需查看具体的修改细节可以在[[此处](https://github.com/c223i/ShootGame2/commits/master)]查看
+
+其实在初始版本之前还修改过好几次,没记错的话前前后后差不多有60-70次,只是从这个版本开始我们才使用GitHub版本管理工具,所以我们重置了修改次数,因此[1.0.0 (Beta 1)]是第一个版本
+
+(*/ω＼*) (*/ω＼*) (*/ω＼*)

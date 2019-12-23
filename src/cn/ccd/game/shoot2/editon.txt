@@ -1,4 +1,4 @@
-	BUMBLE:第1次修改。
+	BUMBLE:第1次修改_@c223i。
 	PROJECT:ShootGame2。
 	EDITION:Beta。
 	VERSIONS:1.0.1。
@@ -43,7 +43,7 @@
 		修改内容： 调整贴图文件位置 增加新的贴图文件(部分暂时还未使用) 修改Images.java文件,调整图片的载入方式 代码优化调整。
 
 
-	NUMBLE:第7次修改_@c223i。
+	NUMBLE:第7次修改。
 	PROJECT:ShootGame2。
 	EDITION:Beta。
 	VERSIONS:1.0.7。
@@ -65,7 +65,7 @@
 		更改素材存放路径，修改贴图和音频的读取方式。
 
 
-	NUMBLE:第9次修改_@c223i。
+	NUMBLE:第9次修改。
 	PROJECT:ShootGame2。
 	EDITION:Beta 9。
 	VERSIONS:1.0.0。
@@ -76,7 +76,7 @@
 		增加时间显示，还增加boss及boss子弹功能类以及boss移动方法子弹的的射击方法与碰撞效果，还利用状态的控制音乐的新功能实现。改变以往音乐实现的bug。
 
 
-	NUMBLE:第10次修改_@c223i。
+	NUMBLE:第10次修改。
 	PROJECT:ShootGame2。
 	EDITION:Beta 10。
 	VERSIONS:1.0.0。
@@ -96,5 +96,16 @@
 	COPYRIGHT:CopyRight (C) 2019。
 	CONTENT:
 		增加召唤宇宙飞船功能。
+
+
+	NUMBLE:第12次修改。
+	PROJECT:ShootGame2。
+	EDITION:Beta 12。
+	VERSIONS:1.0.0。
+	AUTHOR:@c223i @Laxworld @heavenlyking @aiqiner。
+	URL:https://c223i.github.io/ShootGame2/。
+	COPYRIGHT:CopyRight (C) 2019。
+	CONTENT:
+		本次修改请查看【Release_Notes.md】文件中的【# ShootGame2 1.0.0 (Beta 12)】更新。
 
 

@@ -109,7 +109,7 @@ public class Hero extends FlyingObject {
 	/* 扣血 */
 	public synchronized void subtractHp() {
 
-		this.hp -= 20; // 一次20血
+		this.hp -= 10; // 一次10血
 
 		if (this.hp <= 0) {// 如果扣到0则扣生命数换一条血
 

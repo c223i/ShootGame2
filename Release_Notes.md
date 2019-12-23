@@ -1,3 +1,29 @@
+# ShootGame2 1.0.0 (Beta 12)
+
+[@c223i](https://github.com/c223i)
+
+修改内容：
+
+	修改图片载入类,增加新图片
+
+	调整用户信息界面,并新增可视化图标
+
+	去除空投文字描述
+
+	微调BOSS出场时间(可是还是感觉太快了)( •̀ ω •́ )y , 不过这个好像不归我管~~
+
+	减少敌机伤害(-20 > -10)
+
+	延长保护罩持续时间
+
+	音频音量调整
+
+已知BUG：
+
+	null
+
+
+
 # ShootGame2 1.0.0 (Beta 11)
 
 [@Laxworld](https://github.com/Laxworld)
@@ -210,4 +236,16 @@
 
 初始版本
 
-一起参与开发的小伙伴们：[@c223i](https://github.com/c223i) [@Laxworld](https://github.com/Laxworld) [@heavenlyking](https://github.com/heavenlyking) [@aiqiner](https://github.com/aiqiner)
+其实在此版本之前还修改过好几次
+
+没记错的话前前后后差不多有60-70次
+
+只是从这个版本开始我们才使用GitHub版本管理工具
+
+所以我们重置了修改次数
+
+因此这是第一个版本
+
+细微的修改我们不会更新版本号,如需查看具体的修改细节可以在[[此处](https://github.com/c223i/ShootGame2/commits/master)]查看
+
+感谢一起参与开发的小伙伴们：[@c223i](https://github.com/c223i) [@Laxworld](https://github.com/Laxworld) [@heavenlyking](https://github.com/heavenlyking) [@aiqiner](https://github.com/aiqiner)
