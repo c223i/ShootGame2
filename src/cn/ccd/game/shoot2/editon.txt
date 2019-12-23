@@ -87,7 +87,7 @@
 		增加boss血条。
 
 
-	NUMBLE:第11次修改_@c223i。
+	NUMBLE:第11次修改。
 	PROJECT:ShootGame2。
 	EDITION:Beta 11。
 	VERSIONS:1.0.0。
