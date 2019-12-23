@@ -1,10 +1,26 @@
+# ShootGame2 1.0.0 (Beta 11)
+
+[@Laxworld](https://github.com/Laxworld)
+
+修改内容：
+
+	解决上一版本bug
+
+	添加功能 - 可以召唤宇宙联盟神舰助阵 [ctrl + shift + p]
+
+已知BUG：
+
+	unknown
+
+
+
 # ShootGame2 1.0.0 (Beta 10)
 
 [@Laxworld](https://github.com/Laxworld) [@aiqiner](https://github.com/aiqiner)
 
 修改内容：
 
-	(测试) 增加时间显示
+	增加时间显示
 
 	(测试) 增加boss对象,现在可以打boss了
 

@@ -32,6 +32,8 @@
 	
 	按[2]继续游戏(非小键盘)
 
+	按组合键[ctrl + shift + p] 可以召唤宇宙联盟神舰助阵 (不是我起的名字)
+
 【 BGM 】：
 
 	game_start_1	Laura Shigihara - Brainiac Maniac
