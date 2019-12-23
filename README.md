@@ -36,27 +36,49 @@
 
 # BGM
 
-game_start_1	Laura Shigihara - Brainiac Maniac
-game_start_2	乐石涯音频 - 保卫萝卜2-极地主题曲0904
+游戏开始前
 
-game_run_1	Laura Shigihara - Ultimate Battle
-game_run_2	坂元信也,藤尾敦 - AFTER SIDE ~ 地獄のレクイエム
-game_run_3	坂元信也,藤尾敦 - BEFORE SIDE ~ ジャッカルのテーマ
-game_run_4	前沢秀憲 - 密林の戦い
-game_run_5	前沢秀憲 - 炎の要塞
-game_run_6	水谷郁,山西浩一 - ステージ1
+	game_start_1	Laura Shigihara - Brainiac Maniac
 
-game_boss_1	坂元信也,藤尾敦 - BOSS BATTLE ~ ボス戦
-game_boss_2	前沢秀憲 - MASSACRE MOUNTAIN
+	game_start_2	乐石涯音频 - 保卫萝卜2-极地主题曲0904
 
-game_over_1	近藤浩治 - ゲームオーバー (スーパーマリオブラザーズ効果音)
-game_over_2	近藤浩治 - プレイヤーダウン (スーパーマリオブラザーズ効果音)
-game_over_3	前沢秀憲 - ゲーム・オーバー
+游戏中
 
-game_award_1UP	近藤浩治 - 1UP (スーパーマリオブラザーズ効果音)
-game_award_1	近藤浩治 - スーパーマリオに変身したとき (スーパーマリオブラザーズ効果音)
+	game_run_1	Laura Shigihara - Ultimate Battle
 
-game_other_1	澤和雄,平沢道也 - びっくり熱血新記録!はるかなる金メダル：：店 (買い物)
+	game_run_2	坂元信也,藤尾敦 - AFTER SIDE ~ 地獄のレクイエム
+
+	game_run_3	坂元信也,藤尾敦 - BEFORE SIDE ~ ジャッカルのテーマ
+
+	game_run_4	前沢秀憲 - 密林の戦い
+
+	game_run_5	前沢秀憲 - 炎の要塞
+
+	game_run_6	水谷郁,山西浩一 - ステージ1
+
+游戏中BOSS
+
+	game_boss_1	坂元信也,藤尾敦 - BOSS BATTLE ~ ボス戦
+
+	game_boss_2	前沢秀憲 - MASSACRE MOUNTAIN
+
+游戏结束
+
+	game_over_1	近藤浩治 - ゲームオーバー (スーパーマリオブラザーズ効果音)
+
+	game_over_2	近藤浩治 - プレイヤーダウン (スーパーマリオブラザーズ効果音)
+
+	game_over_3	前沢秀憲 - ゲーム・オーバー
+
+奖励音效
+
+	game_award_1UP	近藤浩治 - 1UP (スーパーマリオブラザーズ効果音)
+
+	game_award_1	近藤浩治 - スーパーマリオに変身したとき (スーパーマリオブラザーズ効果音)
+
+其他
+
+	game_other_1	澤和雄,平沢道也 - びっくり熱血新記録!はるかなる金メダル：：店 (買い物)
 
 
 
