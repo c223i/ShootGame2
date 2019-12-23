@@ -87,3 +87,14 @@
 		增加boss血条。
 
 
+	NUMBLE:第11次修改_@c223i。
+	PROJECT:ShootGame2。
+	EDITION:Beta 11。
+	VERSIONS:1.0.0。
+	AUTHOR:@c223i @Laxworld @heavenlyking @aiqiner。
+	URL:https://c223i.github.io/ShootGame2/。
+	COPYRIGHT:CopyRight (C) 2019。
+	CONTENT:
+		增加召唤宇宙飞船功能。
+
+
