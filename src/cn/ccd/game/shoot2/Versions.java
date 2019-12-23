@@ -11,7 +11,8 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 
 public interface Versions {
-	public static String NUMBLE = "第11次修改_@c223i";// 修改次数
+
+  public static String NUMBLE = "第11次修改";// 修改次数
 
 	public static final String PROJECT = "ShootGame2";// 项目名
 	public static final String EDITION = "Beta 11";// 版本 <<<<<< 改这里
