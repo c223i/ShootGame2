@@ -32,7 +32,7 @@
 
 按[2]继续游戏(非小键盘)
 
-按组合键[ctrl + shift + p] 可以召唤宇宙联盟神舰助阵 (不是我起的名字)
+按组合键[ctrl + shift + p] 可以召唤宇宙联盟神舰助阵 (该名字由[@Laxworld](https://github.com/Laxworld)命名)
 
 # BGM
 
