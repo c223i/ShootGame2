@@ -21,6 +21,8 @@ public class Images {
 	public static BufferedImage bar; // 大炮的图片
 	public static BufferedImage boss;//boss
 	public static BufferedImage bossbullet;//boss子弹
+	public static BufferedImage spaceship;
+	public static BufferedImage[] spaceshipBullet;
 	static {
 
 		sky = new BufferedImage[6];
@@ -67,6 +69,8 @@ public class Images {
 		
 		boss=loadImage("boss_1.png");
 		bossbullet=loadImage("bossbullet.png");
+		spaceship=loadImage("召唤宇宙飞船.png");
+		spaceshipBullet=new BufferedImage[]{loadImage("导弹.png"),loadImage("导弹2.png")};
 	}
 
 	public static BufferedImage loadImage(String fileName) {

@@ -47,15 +47,6 @@ public class World extends JPanel implements Versions {
 	/* 运行时间 */
 	private int RunTime = 0;
 
-	/* 创建旋转子弹的控制键，，，，，这个是新增加的功能类 */
-	private boolean revolveKey = false;
-	private RevolveBullet rbullet;// 创建旋转子弹的类
-	private RevolveBullet rbullet1;// 创建旋转子弹的类
-
-	/* 增加一个控制暂停的键 */
-	private boolean pauseKey = false;
-	private boolean startKey = false;
-
 	/* 创建游戏内容/对象 */
 	private Sky sky = new Sky();
 	private Hero hero = new Hero();
@@ -63,12 +54,32 @@ public class World extends JPanel implements Versions {
 	private Bullet[] bullet = {};
 	private ProtectedCover protectedCover = new ProtectedCover();
 
-	/* 创建boss机内容 */
+	/* 创建旋转子弹的控制键，，，，，这个是新增加的功能类 */
+	private boolean revolveKey = false;
+	private static int i = 0;
+	private RevolveBullet[] rBullet = null;// 创建旋转子弹的类
+
+	/* 增加一个控制暂停的键 */
+	private boolean pauseKey = false;
+	private boolean startKey = false;
+	private boolean ctrlKey = false;
+	private boolean shiftKey = false;
+	private boolean pKey = false;
+
+	/* 创建boss机相关的内容 */
 	private BossBullet[] bossbullet = {};
 	private Boss boss;
 	private boolean bossflag = true;
+	private int bossbulletAction = 0;
+	private int index = 0;
 
-	/* 生成敌机类型 */
+	/* 创建联邦宇宙飞船的对象 */
+	private boolean SpaceshipKey = false;
+	private Spaceship sp;
+	private SpaceshipBullet[] ssBullet;
+
+	// 这是一个分界象
+	/* 生成敌机类型的方法 */
 	public FlyingObject generateTheEnemy() {
 
 		int type = new Random().nextInt(55) + 1;
@@ -274,7 +285,7 @@ public class World extends JPanel implements Versions {
 
 				}
 
-				if (!protectedCover.isLife()) { // 判断撞到时是否有保护罩保护，如果没有则执行扣血操作
+				if (!protectedCover.isLife() && !SpaceshipKey) { // 判断撞到时是否有保护罩保护，如果没有则执行扣血操作
 
 					hero.subtractHp();// 扣血
 					hero.subtractFireMode();// 将开火模式降级
@@ -302,40 +313,48 @@ public class World extends JPanel implements Versions {
 
 	/* 旋转子弹的方法 */
 	public void revolveBulletAction() {
-		if (revolveKey == true && rbullet == null) {
-			rbullet = new RevolveBullet(WIDTH / 4, HEIGHT / 5 * 4);
-			rbullet1 = new RevolveBullet(WIDTH / 4 * 3, HEIGHT / 5 * 4);
+		if (rBullet == null && revolveKey == true) {
+			rBullet = new RevolveBullet[3];// 创建旋转子弹的类}
+			for (int i = 0; i < rBullet.length; i++) {
+				rBullet[i] = new RevolveBullet(i * 200 + 100, World.HEIGHT - 20);
+			}
+
 		}
 		if (revolveKey == true) {
 			revolveKey = true;
-//			hero.x = WIDTH / 2; // 这里有个bug
-//			hero.y = HEIGHT / 6 * 5; // 这里有个bug
-			rbullet.step();
-			rbullet1.step();
-
-			for (FlyingObject f : enemies) {
-				if (rbullet.isLife() && f.isLife() && f.hit(rbullet)) {
-					if ((f instanceof Bee)) {// 跳过空投类型
-						continue;
+			for (RevolveBullet rb : rBullet) {
+				rb.step();// 旋转子弹移动
+				for (FlyingObject f : enemies) {
+					if (rb.isLife() && f.isLife() && f.hit(rb)) {
+						if ((f instanceof Bee)) {// 跳过空投类型
+							continue;
+						}
+						rb.subtractLife();
+						f.goDead();
 					}
-					rbullet1.subtractLife();
-					f.goDead();
 
 				}
-				if (rbullet1.isLife() && f.isLife() && f.hit(rbullet1)) {
-					if ((f instanceof Bee)) {// 跳过空投类型
-						continue;
+				for (BossBullet bBullet : bossbullet) {
+					if (rb.isLife() && bBullet.isLife() && rb.hit(bBullet)) {
+						rb.subtractLife();
+						bBullet.goDead();
 					}
-					rbullet1.subtractLife();
-					f.goDead();
-				}
-				System.out.println(rbullet.getLife() + "," + rbullet1.getLife());
-			}
-			if (rbullet.getLife() < 1 || rbullet1.getLife() < 1 || rbullet.outOfBounds() || rbullet1.outOfBounds()) {
 
-				rbullet = null;
-				rbullet1 = null;
-				revolveKey = false;
+				}
+				if (!bossflag) {
+					if (rb.isLife() && boss.isLife() && rb.hit(boss)) {
+						rb.goDead();
+						boss.reduceHp(2);
+					}
+				}
+				if (rb.getLife() < 1 || rb.outOfBounds()) {
+					i++;
+				}
+				if (i == 3) {
+					rBullet = null;
+					revolveKey = false;
+					i = 0;
+				}
 			}
 		}
 
@@ -401,9 +420,6 @@ public class World extends JPanel implements Versions {
 	}
 
 	/* 实现boss出现 */
-	private int bossbulletAction = 0;
-	int index = 0;
-
 	public void bossAction() {
 		/* 生成boss对象 */
 		if (bossflag) {
@@ -425,26 +441,34 @@ public class World extends JPanel implements Versions {
 				bossbullet = boss.shoot();
 			}
 
-			/* boss子弹与英雄机子弹碰撞检测 */
+			/* boss子弹与英雄机子弹与英雄机碰撞检测 */
 
+			boss.step();
 			boss.shoot();
-			if (boss.gethp() <= 0) {
-				boss = null;
-				bossflag = true;
-			}
-			for (BossBullet b1 : bossbullet) {
-				b1.step();
-				for (Bullet b2 : bullet) {
-					if (b1.isLife() && b2.isLife() && b1.hit(b2)) {
-						b2.goDead();
-						b1.goDead();
+			for (BossBullet bB : bossbullet) {
+				bB.step();
+				for (Bullet b : bullet) {
+					if (bB.isLife() && b.isLife() && bB.hit(b)) {
+						b.goDead();
+						bB.goDead();
 					}
 				}
+
+				if (bB.isLife() && hero.isLife() && hero.hit(bB)) {// 与英雄机碰撞检测
+					if (!protectedCover.isLife() && !SpaceshipKey) { // 判断撞到时是否有保护罩保护，如果没有则执行扣血操作
+						hero.subtractHp();// 扣血
+						hero.subtractHp();
+						hero.subtractFireMode();// 将开火模式降级
+						hero.subtractLevel();// 将伤害等级降级
+					}
+					bB.goDead();
+				}
+
 			}
 
 			/* boss与英雄机碰撞检测 */
 			if (boss.isLife() && hero.isLife() && hero.hit(boss)) {
-				if (!protectedCover.isLife()) { // 判断撞到时是否有保护罩保护，如果没有则执行扣血操作
+				if (!protectedCover.isLife() && !SpaceshipKey) { // 判断撞到时是否有保护罩保护，如果没有则执行扣血操作
 					hero.subtractHp();// 扣血
 					hero.subtractHp();
 					hero.subtractFireMode();// 将开火模式降级
@@ -453,32 +477,60 @@ public class World extends JPanel implements Versions {
 				}
 			}
 
-			/* boos子弹与英雄机碰撞检测 */
-
-			for (BossBullet b2 : bossbullet) {
-				if (b2.isLife() && hero.isLife() && hero.hit(b2)) {
-					if (!protectedCover.isLife()) { // 判断撞到时是否有保护罩保护，如果没有则执行扣血操作
-						hero.subtractHp();// 扣血
-						hero.subtractHp();
-						hero.subtractFireMode();// 将开火模式降级
-						hero.subtractLevel();// 将伤害等级降级
-					}
-					b2.goDead();
-				}
-			}
-
 			/* boss与英雄机子弹碰撞检测 */
-			boss.step();
-			boss.shoot();
-			if (boss.gethp() <= 0) {
-				boss = null;
-				bossflag = true;
-			}
 			for (Bullet b : bullet) {
 				if (b.isLife() && boss.isLife() && boss.hit(b)) {
 					boss.subtracthp();
 					b.goDead();
 				}
+			}
+			if (boss.gethp() <= 0) {
+				boss = null;
+				bossflag = true;
+			}
+		}
+	}
+
+	/* 召唤宇宙飞船 */
+	public void spaceshipAction() {
+		if (sp == null && ctrlKey && shiftKey && pKey) {
+			sp = new Spaceship();
+			SpaceshipKey = true;
+			ssBullet = sp.generateTheBullet();
+		}
+		if (sp == null && ctrlKey && shiftKey && pKey) {
+			ssBullet = sp.generateTheBullet();
+		}
+
+		// 宇宙飞船移动，及导弹射击
+		if (SpaceshipKey) {
+			sp.ssStep();
+			if (!bossflag) {
+				for (BossBullet b : bossbullet) {
+					if (sp.isLife() && b.isLife() && sp.hit(b)) {
+						b.goDead();
+					}
+				}
+			}
+			for (SpaceshipBullet sSB : ssBullet) {
+				hero.x = sp.x + 100;
+				hero.y = sp.y + 120;
+				protectedCover.moveTo(hero.x, hero.y);
+				sSB.step();
+				for (FlyingObject e : enemies) {
+					if (sp.isLife() && e.isLife() && sp.hit(e)) {
+						e.goDead();
+					}
+					if (sSB.isLife() && e.isLife() && sSB.hit(e)) {
+						e.goDead();
+						sSB.goDead();
+						// 并且变成散花子弹
+					}
+				}
+				if (sSB.outOfBounds() && sSB.isDead()) {
+
+				}
+
 			}
 		}
 
@@ -506,6 +558,7 @@ public class World extends JPanel implements Versions {
 					bullet = new Bullet[0];
 					protectedCover = new ProtectedCover();
 					state = START;
+
 					break;
 
 				}
@@ -515,7 +568,7 @@ public class World extends JPanel implements Versions {
 			/* 鼠标移动捕获 */
 			public void mouseMoved(MouseEvent e) {
 
-				if (state == RUNNING) {
+				if (state == RUNNING && !SpaceshipKey) {
 
 					hero.moveTo(e.getX(), e.getY());
 					protectedCover.moveTo(e.getX(), e.getY());
@@ -574,6 +627,7 @@ public class World extends JPanel implements Versions {
 					revolveBulletAction();
 
 					bossAction();
+					spaceshipAction();
 				}
 
 				repaint();
@@ -590,18 +644,23 @@ public class World extends JPanel implements Versions {
 
 		sky.paintObject(g);
 		g.drawImage(Images.bar, WIDTH - 110, HEIGHT - 130, null);
+		if (SpaceshipKey) {
+			sp.paintObject(g);
+			for (SpaceshipBullet sSB : ssBullet) {
+				sSB.paintObject(g);
+			}
+		}
 		hero.paintObject(g);
 		protectedCover.paintObject(g);
 
-		if (rbullet != null) {
+		if (rBullet != null) {
 			try {
-				rbullet.paintObject(g);
-				rbullet1.paintObject(g);
+				for (RevolveBullet rb : rBullet) {
+					rb.paintObject(g);
+				}
 			} catch (Exception e) {
 				e.printStackTrace();
-				System.err.println("这里出来一个bug，e");
 			}
-
 		}
 
 		for (int i = 0; i < enemies.length; i++) {
@@ -758,7 +817,6 @@ public class World extends JPanel implements Versions {
 			/* boss */
 			if (boss != null) {
 				boss.paintObject(g);
-				System.out.println("画boss");
 				for (BossBullet b : bossbullet) {
 					b.paintObject(g);
 				}
@@ -804,32 +862,75 @@ public class World extends JPanel implements Versions {
 
 			@Override
 			public void keyTyped(KeyEvent e) {
-				// TODO Auto-generated method stub
+			}
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+				System.out.println("///////" + e.getKeyCode() + "====" + KeyEvent.VK_P);
+				switch (e.getKeyCode()) {
+				case KeyEvent.VK_SPACE:
+					world.revolveKey = true;
+					break;
+				case KeyEvent.VK_1:
+					world.pauseKey = true;
+					break;
+				case KeyEvent.VK_2:
+					world.startKey = true;
+					break;
+				case KeyEvent.VK_CONTROL:
+					world.ctrlKey = true;
+					break;
+				case KeyEvent.VK_SHIFT:
+					world.shiftKey = true;
+					break;
+				case KeyEvent.VK_P:
+					world.pKey = true;
+					break;
+				case KeyEvent.VK_LEFT:
+					Spaceship.leftKey = true;
+					break;
+				case KeyEvent.VK_UP:
+					Spaceship.upKey = true;
+					break;
+				case KeyEvent.VK_RIGHT:
+					Spaceship.rigthKey = true;
+					break;
+				case KeyEvent.VK_DOWN:
+					Spaceship.downKey = true;
+					break;
+
+				default:
+					break;
+				}
 
 			}
 
 			@Override
 			public void keyReleased(KeyEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void keyPressed(KeyEvent e) {
-				System.out.println("/////////////" + KeyEvent.VK_SPACE);
-				if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-					world.revolveKey = true;
-				} else if (e.getKeyCode() == KeyEvent.VK_1) {
-					world.pauseKey = true;
-					System.out.println("world.pauseKey:" + world.pauseKey);
-
-				} else if (e.getKeyCode() == KeyEvent.VK_2) {
-					world.startKey = true;
-
-					System.out.println("world.startKey:" + world.startKey);
+				switch (e.getKeyCode()) {
+				case KeyEvent.VK_P:
+					world.pKey = false;
+				case KeyEvent.VK_CONTROL:
+					world.ctrlKey = false;
+					break;
+				case KeyEvent.VK_SHIFT:
+					world.shiftKey = false;
+					break;
+				case KeyEvent.VK_LEFT:
+					Spaceship.leftKey = false;
+					break;
+				case KeyEvent.VK_UP:
+					Spaceship.upKey = false;
+					break;
+				case KeyEvent.VK_RIGHT:
+					Spaceship.rigthKey = false;
+					break;
+				case KeyEvent.VK_DOWN:
+					Spaceship.downKey = false;
+					break;
 				}
-
 			}
+
 		});
 
 		world.action();

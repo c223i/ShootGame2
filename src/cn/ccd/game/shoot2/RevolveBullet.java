@@ -2,18 +2,19 @@ package cn.ccd.game.shoot2;
 
 import java.awt.image.BufferedImage;
 
-
-public class RevolveBullet  extends FlyingObject{
+public class RevolveBullet extends FlyingObject {
 	private int life;
+
 	public RevolveBullet(int x, int y) {
-		super(30,30,x,y);
-		life=10;
+		super(30, 30, x, y);
+		life = 10;
 	}
 
 	int index = 0;
-	public void step() {// 子弹的移动速度
+
+	public void step() {// 旋转子弹的移动
 		index++;
-		switch (index/2) {
+		switch (index / 2) {
 		case 1:
 			x += 21;
 			y -= 13;
@@ -46,43 +47,43 @@ public class RevolveBullet  extends FlyingObject{
 		case 8:
 			x += 42;
 			y += 9;
-			index=0;
+			index = 0;
 			break;
 		default:
 			break;
 		}
 	}
 
-
 	@Override
 	public BufferedImage getImages() {
 		if (isLife()) {// 若是活着的走这里返回图片，结束getIMamge方法
 			return Images.revolveb;
 		} else if (isDead()) {// 若是死了，修改当前状态行为
-				state = REMOVE;
+			state = REMOVE;
 		}
 		return null;
 	}
 
-/**
- * 对子弹的生命进行减法运算
- */
+	/**
+	 * 对子弹的生命进行减法运算
+	 */
 	public void subtractLife() {
 		life--;
 	}
 
-/**
- * 返回一个生命值
- * @return
- */
+	/**
+	 * 返回一个生命值
+	 * 
+	 * @return
+	 */
 	public int getLife() {
 		return life;
 	}
 
 	public boolean outOfBounds() {
 
-		return this.y <-this.height*4;
+		return this.y < -this.height * 4;
 
 	}
-	
+
 }
