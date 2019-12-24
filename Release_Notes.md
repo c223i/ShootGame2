@@ -1,3 +1,19 @@
+# ShootGame2 1.0.0 (Beta 13)
+
+[@Laxworld](https://github.com/Laxworld)
+
+修改内容：
+
+	增加宇宙飞船初始子弹，解决宇宙飞船出现子弹单一的问题
+
+	给宇宙飞船增加专用的保护罩
+
+	导弹使用快捷键生成
+
+	导弹有hp，hp为零就会爆破并产生数个子弹
+
+
+
 # ShootGame2 1.0.0 (Beta 12)
 
 [@c223i](https://github.com/c223i)
@@ -18,10 +34,6 @@
 
 	音频音量调整
 
-已知BUG：
-
-	null
-
 
 
 # ShootGame2 1.0.0 (Beta 11)
@@ -33,10 +45,6 @@
 	解决上一版本bug
 
 	添加功能 - 可以召唤宇宙联盟神舰助阵 [ctrl + shift + p]
-
-已知BUG：
-
-	unknown
 
 
 
@@ -102,10 +110,6 @@
 
 	3.其他细节优化...
 
-已知BUG：
-
-	null
-
 
 
 # ShootGame2 1.0.0 (Beta 8)
@@ -120,10 +124,6 @@
 
 	调整版本号显示方式
 
-已知BUG：
-
-	null
-
 
 
 # ShootGame2 1.0.0 (Beta 7)
@@ -133,10 +133,6 @@
 修改内容：
 
 	增加了音频资料,使游戏变得更加生动
-
-已知BUG：
-
-	unknown
 
 
 
@@ -174,10 +170,6 @@
 
 	代码优化调整
 
-已知BUG：
-
-	null
-
 
 
 # ShootGame2 1.0.0 (Beta 4)
@@ -194,10 +186,6 @@
 
 	代码排版优化
 
-已知BUG：
-
-	null
-
 
 
 # ShootGame2 1.0.0 (Beta 3)
@@ -207,10 +195,6 @@
 修改内容：
 
 	在world里面添加了一个按键事件(暂停和继续游戏)
-
-已知BUG：
-
-	unknown
 
 
 
@@ -225,10 +209,6 @@
 	存修改的信息文件
 	
 	在world里添加了一个keyEvent事件
-
-已知BUG：
-
-	null
 
 
 
