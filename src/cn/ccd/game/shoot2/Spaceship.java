@@ -1,6 +1,8 @@
 package cn.ccd.game.shoot2;
 
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Spaceship extends FlyingObject {
 	static boolean leftKey = false;
@@ -39,13 +41,15 @@ public class Spaceship extends FlyingObject {
 		return null;
 	}
 
-	/* 生成子弹 */
-	public SpaceshipBullet[] generateTheBullet() {
+	/* 生成巡航导弹 */
+	public List<SpaceshipBullet> generateTheBullet() {
 		int i = 2;
-		SpaceshipBullet[] tempSpaceshipBullet = { new SpaceshipBullet(this.width - i * 100, this.y + i),
-				new SpaceshipBullet(this.width + i * 100, this.y + i) };
-
-		return tempSpaceshipBullet;
+		List<SpaceshipBullet> temp=new ArrayList<SpaceshipBullet>();
+		temp.add(new SpaceshipBullet(this.width - i * 100, this.y + i));
+		temp.add(new SpaceshipBullet(this.width + i * 100, this.y + i));
+		return temp;
+		
 	}
+
 
 }

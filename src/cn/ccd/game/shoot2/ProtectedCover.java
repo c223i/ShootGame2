@@ -28,7 +28,10 @@ public class ProtectedCover extends FlyingObject {
 
 	public BufferedImage getImages() {
 
-		if (isLife()) {
+		if(World.SpaceshipFlag) {
+			return Images.pt[index++%Images.pt.length];
+			
+		}else if (isLife()) {
 
 			return Images.ProtectedCover[index++ % Images.ProtectedCover.length];
 

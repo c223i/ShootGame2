@@ -14,6 +14,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -56,7 +58,7 @@ public class World extends JPanel implements Versions {
 
 	/* 创建旋转子弹的控制键，，，，，这个是新增加的功能类 */
 	private boolean revolveKey = false;
-	private static int i = 0;
+	private int i = 0;
 	private RevolveBullet[] rBullet = null;// 创建旋转子弹的类
 
 	/* 增加一个控制暂停的键 */
@@ -65,6 +67,7 @@ public class World extends JPanel implements Versions {
 	private boolean ctrlKey = false;
 	private boolean shiftKey = false;
 	private boolean pKey = false;
+	private boolean spBFlag = false;
 
 	/* 创建boss机相关的内容 */
 	private BossBullet[] bossbullet = {};
@@ -74,9 +77,13 @@ public class World extends JPanel implements Versions {
 	private int index = 0;
 
 	/* 创建联邦宇宙飞船的对象 */
-	private boolean SpaceshipKey = false;
+	public static boolean SpaceshipFlag = false;
 	private Spaceship sp;
-	private SpaceshipBullet[] ssBullet;
+	private Shot[] shot;
+	private boolean shotFlag = false;
+	private boolean ssBulletFlag = false;
+	List<SpaceshipBullet> tempSpBu;
+	Iterator<SpaceshipBullet> spB;
 
 	// 这是一个分界象
 	/* 生成敌机类型的方法 */
@@ -285,7 +292,7 @@ public class World extends JPanel implements Versions {
 
 				}
 
-				if (!protectedCover.isLife() && !SpaceshipKey) { // 判断撞到时是否有保护罩保护，如果没有则执行扣血操作
+				if (!protectedCover.isLife() && !SpaceshipFlag) { // 判断撞到时是否有保护罩保护，如果没有则执行扣血操作
 
 					hero.subtractHp();// 扣血
 					hero.subtractFireMode();// 将开火模式降级
@@ -455,7 +462,7 @@ public class World extends JPanel implements Versions {
 				}
 
 				if (bB.isLife() && hero.isLife() && hero.hit(bB)) {// 与英雄机碰撞检测
-					if (!protectedCover.isLife() && !SpaceshipKey) { // 判断撞到时是否有保护罩保护，如果没有则执行扣血操作
+					if (!protectedCover.isLife() && !SpaceshipFlag) { // 判断撞到时是否有保护罩保护，如果没有则执行扣血操作
 						hero.subtractHp();// 扣血
 						hero.subtractHp();
 						hero.subtractFireMode();// 将开火模式降级
@@ -468,7 +475,7 @@ public class World extends JPanel implements Versions {
 
 			/* boss与英雄机碰撞检测 */
 			if (boss.isLife() && hero.isLife() && hero.hit(boss)) {
-				if (!protectedCover.isLife() && !SpaceshipKey) { // 判断撞到时是否有保护罩保护，如果没有则执行扣血操作
+				if (!protectedCover.isLife() && !SpaceshipFlag) { // 判断撞到时是否有保护罩保护，如果没有则执行扣血操作
 					hero.subtractHp();// 扣血
 					hero.subtractHp();
 					hero.subtractFireMode();// 将开火模式降级
@@ -493,18 +500,31 @@ public class World extends JPanel implements Versions {
 
 	/* 召唤宇宙飞船 */
 	public void spaceshipAction() {
-		if (sp == null && ctrlKey && shiftKey && pKey) {
+		if (sp == null && ctrlKey && shiftKey && pKey) {// 召唤宇宙飞船s
 			sp = new Spaceship();
-			SpaceshipKey = true;
-			ssBullet = sp.generateTheBullet();
+			SpaceshipFlag = true;
+			i = 0;
+			hero.addFireMode();
+			hero.addFireMode();
 		}
-		if (sp == null && ctrlKey && shiftKey && pKey) {
-			ssBullet = sp.generateTheBullet();
+		if (SpaceshipFlag && ctrlKey && spBFlag) {// 生成导弹
+			tempSpBu = sp.generateTheBullet();
+			ssBulletFlag = true;
 		}
-
 		// 宇宙飞船移动，及导弹射击
-		if (SpaceshipKey) {
+		if (SpaceshipFlag) {
+			hero.x = sp.x + 100;
+			hero.y = sp.y + 120;
+			protectedCover.moveTo(hero.x, hero.y - 40);// 固定英雄机的位置
 			sp.ssStep();
+			for (FlyingObject e : enemies) {
+				if ((e instanceof Bee)) {// 跳过空投类型
+					continue;
+				}
+				if (sp.isLife() && e.isLife() && sp.hit(e)) {// 飞船与敌人的判断
+					e.goDead();
+				}
+			}
 			if (!bossflag) {
 				for (BossBullet b : bossbullet) {
 					if (sp.isLife() && b.isLife() && sp.hit(b)) {
@@ -512,25 +532,71 @@ public class World extends JPanel implements Versions {
 					}
 				}
 			}
-			for (SpaceshipBullet sSB : ssBullet) {
-				hero.x = sp.x + 100;
-				hero.y = sp.y + 120;
-				protectedCover.moveTo(hero.x, hero.y);
-				sSB.step();
+		}
+		/* 巡航导弹的移动 碰撞 */
+		if (ssBulletFlag) {
+			spB = tempSpBu.iterator();
+			while (spB.hasNext()) {
+				SpaceshipBullet sb = spB.next();
+				if (!bossflag) {
+					for (BossBullet b : bossbullet) {
+						if (sb.isLife() && b.isLife() && sb.hit(b)) {
+							b.goDead();
+							sb.reduceHp(1);
+						}
+					}
+				}
+				sb.step();
 				for (FlyingObject e : enemies) {
-					if (sp.isLife() && e.isLife() && sp.hit(e)) {
-						e.goDead();
+					if ((e instanceof Bee)) {// 跳过空投类型
+						continue;
 					}
-					if (sSB.isLife() && e.isLife() && sSB.hit(e)) {
+					if (sb.isLife() && e.isLife() && sb.hit(e)) {
+						System.out.println("导弹与敌人进行了碰撞");
 						e.goDead();
-						sSB.goDead();
-						// 并且变成散花子弹
+						sb.reduceHp(1);
 					}
 				}
-				if (sSB.outOfBounds() && sSB.isDead()) {
+				if (sb.getHp() <= 0) {// 并且变成散花子弹
+					shotFlag = true;
+					System.out.println("这时导弹的生命为零");
+					shot = sb.generateShot();
+					spB.remove();
+				}
+				if (i == 2) {
+					ssBulletFlag = false;
+					tempSpBu = null;
+				}
+			}
+
+		}
+		if (shotFlag) {
+			for (Shot s : shot) {
+				s.step();
+				if(sp.isLife()&&s.isLife()&&s.hit(sp)) {
+					s.goDead();
+				}
+				for (BossBullet b : bossbullet) {
+
+					if (s.isLife() && b.isLife() && b.hit(s)) {
+						b.goDead();
+						s.goDead();
+					}
 
 				}
-
+				if (!bossflag && boss.isLife() && boss.hit(s)) {
+					boss.reduceHp(1);
+					s.goDead();
+				}
+				for (FlyingObject e : enemies) {
+					if ((e instanceof Bee)) {// 跳过空投类型
+						continue;
+					}
+					if (s.isLife() && e.isLife() && e.hit(s)) {
+						e.goDead();
+						s.goDead();
+					}
+				}
 			}
 		}
 
@@ -560,7 +626,6 @@ public class World extends JPanel implements Versions {
 					bossbullet = new BossBullet[0];
 					boss = new Boss();
 					sp = new Spaceship();
-					ssBullet = new SpaceshipBullet[0];
 					state = START;
 
 					break;
@@ -572,7 +637,7 @@ public class World extends JPanel implements Versions {
 			/* 鼠标移动捕获 */
 			public void mouseMoved(MouseEvent e) {
 
-				if (state == RUNNING && !SpaceshipKey) {
+				if (state == RUNNING && !SpaceshipFlag) {
 
 					hero.moveTo(e.getX(), e.getY());
 					protectedCover.moveTo(e.getX(), e.getY());
@@ -647,15 +712,30 @@ public class World extends JPanel implements Versions {
 		g.setColor(Color.YELLOW);
 
 		sky.paintObject(g);
-		g.drawImage(Images.bar, WIDTH - 110, HEIGHT - 130, null);
-		if (SpaceshipKey) {
-			sp.paintObject(g);
-			for (SpaceshipBullet sSB : ssBullet) {
+
+		if (ssBulletFlag) {
+			for (SpaceshipBullet sSB : tempSpBu) {
 				sSB.paintObject(g);
 			}
 		}
+
+		g.drawImage(Images.bar, WIDTH - 110, HEIGHT - 130, null);
+
+		if (SpaceshipFlag) {
+			sp.paintObject(g);
+		}
+
 		hero.paintObject(g);
-		protectedCover.paintObject(g);
+
+		if (SpaceshipFlag) {
+			protectedCover.paintObject(g);
+		}
+
+		if (shotFlag) {
+			for (Shot st : shot) {
+				st.paintObject(g);
+			}
+		}
 
 		if (rBullet != null) {
 			try {
@@ -800,8 +880,8 @@ public class World extends JPanel implements Versions {
 
 				/* 游戏信息显示 */
 				g.setColor(Color.YELLOW);
-				g.drawString("时间：[  " + new SimpleDateFormat("HH : mm : ss").format(new Date()) + "  ]", World.WIDTH - 130,
-						20);
+				g.drawString("时间：[  " + new SimpleDateFormat("HH : mm : ss").format(new Date()) + "  ]",
+						World.WIDTH - 130, 20);
 				g.setColor(Color.YELLOW);
 				g.drawString(PROJECT + " ( " + EDITION + " )", 10, World.HEIGHT - 140);
 				g.drawString("Versions " + VERSIONS, 10, World.HEIGHT - 120);
@@ -824,7 +904,6 @@ public class World extends JPanel implements Versions {
 		}
 	}
 
-
 	/* 游戏(程序)入口 */
 	public static void main(String[] ccd) {
 
@@ -838,8 +917,6 @@ public class World extends JPanel implements Versions {
 		frame.setSize(World.WIDTH + 10, World.HEIGHT);
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
-
-		/* 在画框里面添加按键事件 */
 		frame.addKeyListener(new KeyListener() {
 
 			@Override
@@ -850,6 +927,9 @@ public class World extends JPanel implements Versions {
 			public void keyPressed(KeyEvent e) {
 				System.out.println("///////" + e.getKeyCode() + "====" + KeyEvent.VK_P);
 				switch (e.getKeyCode()) {
+				case KeyEvent.VK_T:
+					world.spBFlag = true;
+					break;
 				case KeyEvent.VK_SPACE:
 					world.revolveKey = true;
 					break;
@@ -890,6 +970,9 @@ public class World extends JPanel implements Versions {
 			@Override
 			public void keyReleased(KeyEvent e) {
 				switch (e.getKeyCode()) {
+				case KeyEvent.VK_T:
+					world.spBFlag = false;
+					break;
 				case KeyEvent.VK_P:
 					world.pKey = false;
 				case KeyEvent.VK_CONTROL:
