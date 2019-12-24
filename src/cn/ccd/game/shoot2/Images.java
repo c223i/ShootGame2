@@ -23,6 +23,8 @@ public class Images {
 	public static BufferedImage bossbullet;//boss子弹
 	public static BufferedImage spaceship;
 	public static BufferedImage[] spaceshipBullet;
+	public static BufferedImage  shot;
+	public static BufferedImage[] pt;
 	
 	//状态信息
 	public static BufferedImage playerState_LIFE;
@@ -83,12 +85,19 @@ public class Images {
 				loadImage("导弹.png"),
 				loadImage("导弹2.png")
 		};
+		pt=new BufferedImage[] {
+				loadImage("保护罩1.png"),
+				loadImage("保护罩2.png")
+		};
+		
 		
 		playerState_LIFE = loadImage("LIFE.png");
 		playerState_PROTECTED_COVER = loadImage("PROTECTED_COVER.png");
 		playerState_BULLRT_LEVEL = loadImage("BULLRT_LEVEL.png");
 		playerState_HERO_LEVEL = loadImage("HERO_LEVEL.png");
 		playerState_INCREASE_HP = loadImage("INCREASE_HP.png");
+		
+		shot=loadImage("爆炸子弹的图片.png");
 		
 	}
 

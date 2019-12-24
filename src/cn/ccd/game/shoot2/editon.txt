@@ -109,3 +109,15 @@
 		本次修改请查看【Release_Notes.md】文件中的【# ShootGame2 1.0.0 (Beta 12)】更新。
 
 
+
+	NUMBLE:第13次修改。
+	PROJECT:ShootGame2。
+	EDITION:Beta 13。
+	VERSIONS:1.0.0。
+	AUTHOR:@c223i @Laxworld @heavenlyking @aiqiner。
+	URL:https://c223i.github.io/ShootGame2/。
+	COPYRIGHT:CopyRight (C) 2019。
+	CONTENT:
+		增加宇宙飞船出现子弹单一的问题并且出现新的保护罩。
+
+

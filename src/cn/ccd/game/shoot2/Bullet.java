@@ -23,7 +23,10 @@ public class Bullet extends FlyingObject {
 	public void step() {
 
 		this.y -= this.ySpeed;
-		this.x -= this.xSpeed;
+		if(this.bulletType!=3&&World.SpaceshipFlag) {
+			this.x -= this.xSpeed;
+		}
+		
 
 	}
 
@@ -44,6 +47,9 @@ public class Bullet extends FlyingObject {
 				this.width = 10;
 				this.height = 42;
 				this.ySpeed = 8;
+				if(World.SpaceshipFlag) {
+				return Images.bullet[bulletType];
+				}
 				return Images.bullet[bulletType - 1];
 			case 4:
 				this.width = 19;

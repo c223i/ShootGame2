@@ -65,15 +65,19 @@ public class Hero extends FlyingObject {
 			tempBullet[0] = new Bullet(this.x + x * 2, this.y, 0, level);
 			tempBullet[1] = new Bullet(this.x + x * 4, this.y, 0, level);
 			return tempBullet;
-
-		case 3:// 三开火模式
-
+			
+		case 3:// 宇宙飞船开火模式
 			tempBullet = new Bullet[3];
+			if(World.SpaceshipFlag) {
+				tempBullet[0] = new Bullet(this.x - 60, this.y-68, 0, level);
+				tempBullet[1] = new Bullet(this.x+x * 3, this.y-68, 0, level);
+				tempBullet[2] = new Bullet(this.x +150, this.y-68, 0, level);
+				return tempBullet;
+			}
 			tempBullet[0] = new Bullet(this.x + x * 1, this.y, 0, level);
 			tempBullet[1] = new Bullet(this.x + x * 3, this.y, 0, level);
 			tempBullet[2] = new Bullet(this.x + x * 5, this.y, 0, level);
 			return tempBullet;
-
 		case 4:// 五开火模式
 
 			tempBullet = new Bullet[] { new Bullet(this.x + x * 1, this.y, 1, level),
@@ -88,6 +92,7 @@ public class Hero extends FlyingObject {
 				tempBullet[i] = new Bullet(this.x + x * 3, this.y, j--, level);
 			}
 			return tempBullet;
+
 		}
 
 	}
