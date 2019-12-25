@@ -866,6 +866,7 @@ public class World extends JPanel implements Versions {
 
 				/* 英雄机保护罩显示 */
 				if (protectedCover.isLife()) {// 如果保护罩存在才显示
+					protectedCover.paintObject(g);
 					g.drawImage(Images.playerState_PROTECTED_COVER, 12, 145, null);
 					g.setColor(Color.WHITE);
 					g.drawRect(46, 150, hero.width + 3, 12);
