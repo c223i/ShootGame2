@@ -79,10 +79,22 @@ public class Hero extends FlyingObject {
 			tempBullet[2] = new Bullet(this.x + x * 5, this.y, 0, level);
 			return tempBullet;
 		case 4:// 五开火模式
-
-			tempBullet = new Bullet[] { new Bullet(this.x + x * 1, this.y, 1, level),
-					new Bullet(this.x + x * 2, this.y, 0, level), new Bullet(this.x + x * 3, this.y, 0, level),
-					new Bullet(this.x + x * 4, this.y, 0, level), new Bullet(this.x + x * 5, this.y, -1, level) };
+			
+			if(World.SpaceshipFlag) {
+				tempBullet = new Bullet[] { 
+						new Bullet(this.x - 60, this.y-68, 1, level),
+						new Bullet(this.x - 60, this.y-68, 0, level), 
+						new Bullet(this.x + x * 3, this.y, 0, level),
+						new Bullet(this.x + 150, this.y-68, 0, level), 
+						new Bullet(this.x + 150, this.y-68, -1, level) };
+				return tempBullet;
+			}
+			tempBullet = new Bullet[] { 
+					new Bullet(this.x + x * 1, this.y, 1, level),
+					new Bullet(this.x + x * 2, this.y, 0, level), 
+					new Bullet(this.x + x * 3, this.y, 0, level),
+					new Bullet(this.x + x * 4, this.y, 0, level), 
+					new Bullet(this.x + x * 5, this.y, -1, level) };
 			return tempBullet;
 
 		case 5:// 超级开火模式(大型散弹)
@@ -119,6 +131,8 @@ public class Hero extends FlyingObject {
 		if (this.hp <= 0) {// 如果扣到0则扣生命数换一条血
 
 			subtractLife();
+			subtractLevel();
+			subtractFireMode();
 			this.hp = 100;
 
 		}
@@ -143,9 +157,11 @@ public class Hero extends FlyingObject {
 	/* 减命 */
 	public synchronized void subtractLife() {
 
-		if (this.life > 0) { // 防止扣到负数
+		this.life--;
+		
+		if (this.life <= 0) { // 防止扣到负数
 
-			this.life--;
+			this.life = 0;
 
 		}
 
@@ -162,9 +178,11 @@ public class Hero extends FlyingObject {
 	/* 增加伤害等级 */
 	public synchronized void addLevel() {
 
-		if (this.level < 4) { // 防止超过4
+		this.level++;
+		
+		if (this.level >= 4) { // 防止超过4
 
-			this.level++;
+			this.level = 4;
 
 		}
 
@@ -172,10 +190,12 @@ public class Hero extends FlyingObject {
 
 	/* 减少伤害等级 */
 	public synchronized void subtractLevel() {
+		
+		this.level--;
 
-		if (this.level > 1) { // 防止扣到0
+		if (this.level <= 1) { // 防止扣到0
 
-			this.level--;
+			this.level = 1;
 
 		}
 
@@ -192,9 +212,11 @@ public class Hero extends FlyingObject {
 	/* 升级开火模式 */
 	public synchronized void addFireMode() {
 
-		if (this.fireMode < 5) { // 防止超过5
+		this.fireMode++;
+		
+		if (this.fireMode >= 5) { // 防止超过5
 
-			this.fireMode++;
+			this.fireMode = 5;
 
 		}
 
@@ -203,10 +225,12 @@ public class Hero extends FlyingObject {
 	/* 降级开火模式 */
 	public synchronized void subtractFireMode() {
 
-		if (this.fireMode > 1) { // 防止扣到0
-
-			this.fireMode--;
-
+		this.fireMode--;
+		
+		if (this.fireMode < 1) { // 防止扣到0
+			
+			this.fireMode = 1;
+			
 		}
 
 	}
@@ -235,9 +259,11 @@ public class Hero extends FlyingObject {
 	/* 减少保护罩能量 */
 	public synchronized void subtractProtectedCover() {
 
-		if (this.protectedCover > 0) { // 防止扣到0
+		this.protectedCover--;
+		
+		if (this.protectedCover <= 0) { // 防止扣到0
 
-			this.protectedCover--;
+			this.protectedCover = 0;
 
 		}
 

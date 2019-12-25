@@ -47,7 +47,7 @@ public class World extends JPanel implements Versions {
 	private int newScore = 0;
 
 	/* 运行时间 */
-	private int RunTime = 0;
+	private static int RunTime = 0;
 
 	/* 创建游戏内容/对象 */
 	private Sky sky = new Sky();
@@ -295,8 +295,6 @@ public class World extends JPanel implements Versions {
 				if (!protectedCover.isLife() && !SpaceshipFlag) { // 判断撞到时是否有保护罩保护，如果没有则执行扣血操作
 
 					hero.subtractHp();// 扣血
-					hero.subtractFireMode();// 将开火模式降级
-					hero.subtractLevel();// 将伤害等级降级
 
 				}
 
@@ -371,12 +369,10 @@ public class World extends JPanel implements Versions {
 	public void pauseKyeAction() {
 		if (pauseKey == true) {
 			state = PAUSE;
-			System.out.println("判断游戏是否暂停" + state);
 			pauseKey = false;
 		}
 		if (startKey == true) {
 			state = RUNNING;
-			System.out.println("判断游戏是否运行" + state);
 			startKey = false;
 		}
 
@@ -435,7 +431,6 @@ public class World extends JPanel implements Versions {
 				boss = new Boss();
 				bossflag = false;
 				boss.shoot();
-				System.out.println("生成boss");
 				boss.gethp();
 			}
 		}
@@ -465,8 +460,6 @@ public class World extends JPanel implements Versions {
 					if (!protectedCover.isLife() && !SpaceshipFlag) { // 判断撞到时是否有保护罩保护，如果没有则执行扣血操作
 						hero.subtractHp();// 扣血
 						hero.subtractHp();
-						hero.subtractFireMode();// 将开火模式降级
-						hero.subtractLevel();// 将伤害等级降级
 					}
 					bB.goDead();
 				}
@@ -478,8 +471,6 @@ public class World extends JPanel implements Versions {
 				if (!protectedCover.isLife() && !SpaceshipFlag) { // 判断撞到时是否有保护罩保护，如果没有则执行扣血操作
 					hero.subtractHp();// 扣血
 					hero.subtractHp();
-					hero.subtractFireMode();// 将开火模式降级
-					hero.subtractLevel();// 将伤害等级降级
 					boss.subtracthp();
 				}
 			}
@@ -552,14 +543,12 @@ public class World extends JPanel implements Versions {
 						continue;
 					}
 					if (sb.isLife() && e.isLife() && sb.hit(e)) {
-						System.out.println("导弹与敌人进行了碰撞");
 						e.goDead();
 						sb.reduceHp(1);
 					}
 				}
 				if (sb.getHp() <= 0) {// 并且变成散花子弹
 					shotFlag = true;
-					System.out.println("这时导弹的生命为零");
 					shot = sb.generateShot();
 					spB.remove();
 				}
@@ -623,9 +612,19 @@ public class World extends JPanel implements Versions {
 					enemies = new FlyingObject[0];
 					bullet = new Bullet[0];
 					protectedCover = new ProtectedCover();
+					World.RunTime = 0;
+					
 					bossbullet = new BossBullet[0];
 					boss = new Boss();
-					sp = new Spaceship();
+					bossflag = true;
+					bossbulletAction = 0;
+					index = 0;
+
+					World.SpaceshipFlag = false;
+					shot = null;
+					shotFlag = false;
+					ssBulletFlag = false;
+					tempSpBu = null;
 					state = START;
 
 					break;
@@ -699,6 +698,7 @@ public class World extends JPanel implements Versions {
 					spaceshipAction();
 				}
 
+				World.RunTime++;
 				repaint();
 
 			}
@@ -839,57 +839,58 @@ public class World extends JPanel implements Versions {
 						g.fillRect(tempBigAirplane.x + 2, tempBigAirplane.y - 10 + 2, tempBigAirplane.getHp(), 3);
 					}
 				}
-
-				/* 玩家基本信息显示 */
-				g.setColor(Color.YELLOW);
-				g.drawString("当前分数：[ " + newScore + " ]", 10, 20);
-				g.drawImage(Images.playerState_LIFE, 10, 30, null);
-				g.drawString(" x" + (hero.getLife() - 1), 40, 50);
-
-				g.drawImage(Images.playerState_INCREASE_HP, 10, 63, null);
-				g.setColor(Color.WHITE);
-				g.drawRect(46, 63, 100 + 3, 12);
-				if (hero.getHp() > 50) {
-					g.setColor(Color.GREEN);
-				} else if (hero.getHp() > 30) {
-					g.setColor(Color.YELLOW);
-				} else {
-					g.setColor(Color.RED);
-				}
-				g.fillRect(48, 65, hero.getHp(), 9);
-
-				g.setColor(Color.YELLOW);
-				g.drawImage(Images.playerState_HERO_LEVEL, 10, 85, null);
-				g.drawString(" x" + hero.getLevel(), 40, 105);
-				g.drawImage(Images.playerState_BULLRT_LEVEL, 10, 115, null);
-				g.drawString(" x" + hero.getFireMode(), 40, 135);
-
-				/* 英雄机保护罩显示 */
-				if (protectedCover.isLife()) {// 如果保护罩存在才显示
-					g.drawImage(Images.playerState_PROTECTED_COVER, 12, 145, null);
-					g.setColor(Color.WHITE);
-					g.drawRect(46, 150, hero.width + 3, 12);
-					g.fillRect(46 + 2, 152, hero.getProtectedCoverNum(), 9);
-					if (RunTime % 10 == 0) {// 按照一定时间调用方法减少保护罩能量值
-						hero.subtractProtectedCover();
-					}
-					if (hero.getProtectedCoverNum() == 0) {// 如果保护罩能量值为0则关闭保护罩
-						protectedCover.goDead();
-					}
-				}
-
-				/* 游戏信息显示 */
-				g.setColor(Color.YELLOW);
-				g.drawString("时间：[  " + new SimpleDateFormat("HH : mm : ss").format(new Date()) + "  ]",
-						World.WIDTH - 130, 20);
-				g.setColor(Color.YELLOW);
-				g.drawString(PROJECT + " ( " + EDITION + " )", 10, World.HEIGHT - 140);
-				g.drawString("Versions " + VERSIONS, 10, World.HEIGHT - 120);
-				g.drawString("Author " + AUTHOR, 10, World.HEIGHT - 100);
-				g.drawString(COPYRIGHT, 10, World.HEIGHT - 80);
-				g.drawString("RunTime[" + (RunTime++) + "]", 10, World.HEIGHT - 60);
-
 			}
+
+			/* 玩家基本信息显示 */
+			g.setColor(Color.YELLOW);
+			g.drawString("当前分数：[ " + newScore + " ]", 10, 20);
+			g.drawImage(Images.playerState_LIFE, 10, 30, null);
+			g.drawString(" x" + (hero.getLife() - 1), 40, 50);
+
+			g.drawImage(Images.playerState_INCREASE_HP, 10, 63, null);
+			g.setColor(Color.WHITE);
+			g.drawRect(46, 63, 100 + 3, 12);
+			if (hero.getHp() > 50) {
+				g.setColor(Color.GREEN);
+			} else if (hero.getHp() > 30) {
+				g.setColor(Color.YELLOW);
+			} else {
+				g.setColor(Color.RED);
+			}
+			g.fillRect(48, 65, hero.getHp(), 9);
+
+			g.setColor(Color.YELLOW);
+			g.drawImage(Images.playerState_HERO_LEVEL, 10, 85, null);
+			g.drawString(" x" + hero.getLevel(), 40, 105);
+			g.drawImage(Images.playerState_BULLRT_LEVEL, 10, 115, null);
+			g.drawString(" x" + hero.getFireMode(), 40, 135);
+
+			/* 英雄机保护罩显示 */
+			if (protectedCover.isLife()) {// 如果保护罩存在才显示
+				protectedCover.paintObject(g);
+				g.drawImage(Images.playerState_PROTECTED_COVER, 12, 145, null);
+				g.setColor(Color.WHITE);
+				g.drawRect(46, 150, hero.width + 3, 12);
+				g.fillRect(46 + 2, 152, hero.getProtectedCoverNum(), 9);
+				if (World.RunTime % 3 == 0) {// 按照一定时间调用方法减少保护罩能量值
+					hero.subtractProtectedCover();
+				}
+				if (hero.getProtectedCoverNum() == 0) {// 如果保护罩能量值为0则关闭保护罩
+					protectedCover.goDead();
+				}
+			}
+
+			/* 游戏信息显示 */
+			g.setColor(Color.YELLOW);
+			g.drawString("时间：[  " + new SimpleDateFormat("HH : mm : ss").format(new Date()) + "  ]",
+					World.WIDTH - 130, 20);
+			g.setColor(Color.YELLOW);
+			g.drawString(PROJECT + " ( " + EDITION + " )", 10, World.HEIGHT - 120);
+			g.drawString("Versions " + VERSIONS, 10, World.HEIGHT - 100);
+			g.drawString("Author " + AUTHOR, 10, World.HEIGHT - 80);
+			g.drawString(COPYRIGHT, 10, World.HEIGHT - 60);
+
+
 		}
 
 		/* 显示排行榜 */
@@ -925,7 +926,6 @@ public class World extends JPanel implements Versions {
 
 			@Override
 			public void keyPressed(KeyEvent e) {
-				System.out.println("///////" + e.getKeyCode() + "====" + KeyEvent.VK_P);
 				switch (e.getKeyCode()) {
 				case KeyEvent.VK_T:
 					world.spBFlag = true;

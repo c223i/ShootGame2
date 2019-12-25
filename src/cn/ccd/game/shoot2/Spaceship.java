@@ -20,14 +20,14 @@ public class Spaceship extends FlyingObject {
 	}
 
 	public void ssStep() {
-		int type = 5;
+		int type = 8;
 		if (upKey && this.y > 333) {
 			this.y -= type;
-		} else if (leftKey && this.x > 0) {
+		} else if (leftKey && this.x > -this.width/2) {
 			this.x -= type;
-		} else if (rigthKey && this.x < World.WIDTH - width) {
+		} else if (rigthKey && this.x < World.WIDTH - (this.width/2)) {
 			this.x += type;
-		} else if (downKey && this.y < World.HEIGHT - height) {
+		} else if (downKey && this.y < World.HEIGHT - (this.height/2)) {
 			this.y += type;
 		}
 

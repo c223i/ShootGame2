@@ -23,10 +23,11 @@ public class Bullet extends FlyingObject {
 	public void step() {
 
 		this.y -= this.ySpeed;
-		if(this.bulletType!=3&&World.SpaceshipFlag) {
+		if (!World.SpaceshipFlag) {// 宇宙飞船不存在走这里
+			this.x -= this.xSpeed;
+		} else {
 			this.x -= this.xSpeed;
 		}
-		
 
 	}
 

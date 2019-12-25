@@ -1,3 +1,27 @@
+# ShootGame2 1.0.0 (Beta 14)
+
+[@c223i](https://github.com/c223i),[@Laxworld](https://github.com/Laxworld),[@heavenlyking](https://github.com/heavenlyking)
+
+修改内容：
+
+	修复玩家界面闪频问题
+
+	修复玩家子弹错位问题,并优化子弹飞行轨迹
+
+	微调宇宙飞船移动速度
+
+	去除部分测试代码
+
+	修改玩家火力等级与开火等级的降级方式(扣一条命才降一级)
+
+	优化玩家内部属性的改变方式
+
+	修复玩家保护罩消失过快的问题
+
+	以上
+
+
+
 # ShootGame2 1.0.0 (Beta 13)
 
 [@Laxworld](https://github.com/Laxworld)
