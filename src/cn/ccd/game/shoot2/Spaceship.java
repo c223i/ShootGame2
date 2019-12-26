@@ -23,11 +23,11 @@ public class Spaceship extends FlyingObject {
 		int type = 8;
 		if (upKey && this.y > 333) {
 			this.y -= type;
-		} else if (leftKey && this.x > -this.width/2) {
+		} else if (leftKey && this.x > -this.width / 2) {
 			this.x -= type;
-		} else if (rigthKey && this.x < World.WIDTH - (this.width/2)) {
+		} else if (rigthKey && this.x < World.WIDTH - (this.width / 2)) {
 			this.x += type;
-		} else if (downKey && this.y < World.HEIGHT - (this.height/2)) {
+		} else if (downKey && this.y < World.HEIGHT - (this.height / 2)) {
 			this.y += type;
 		}
 
@@ -44,12 +44,11 @@ public class Spaceship extends FlyingObject {
 	/* 生成巡航导弹 */
 	public List<SpaceshipBullet> generateTheBullet() {
 		int i = 2;
-		List<SpaceshipBullet> temp=new ArrayList<SpaceshipBullet>();
-		temp.add(new SpaceshipBullet(this.width - i * 100, this.y + i));
-		temp.add(new SpaceshipBullet(this.width + i * 100, this.y + i));
+		List<SpaceshipBullet> temp = new ArrayList<SpaceshipBullet>();
+		temp.add(new SpaceshipBullet(this.width - i * 50, this.y - i * 50));
+		temp.add(new SpaceshipBullet(this.width + i * 50, this.y - i * 50));
 		return temp;
-		
-	}
 
+	}
 
 }

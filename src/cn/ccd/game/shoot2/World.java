@@ -8,6 +8,7 @@ package cn.ccd.game.shoot2;
  */
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 
 import javax.swing.JFrame;
@@ -529,6 +530,7 @@ public class World extends JPanel implements Versions {
 			spB = tempSpBu.iterator();
 			while (spB.hasNext()) {
 				SpaceshipBullet sb = spB.next();
+				sb.step();
 				if (!bossflag) {
 					for (BossBullet b : bossbullet) {
 						if (sb.isLife() && b.isLife() && sb.hit(b)) {
@@ -536,8 +538,11 @@ public class World extends JPanel implements Versions {
 							sb.reduceHp(1);
 						}
 					}
+					if (boss.isLife() && sb.isLife() && sb.hit(boss)) {
+						boss.reduceHp(1);
+						sb.reduceHp(1);
+					}
 				}
-				sb.step();
 				for (FlyingObject e : enemies) {
 					if ((e instanceof Bee)) {// 跳过空投类型
 						continue;
@@ -562,7 +567,7 @@ public class World extends JPanel implements Versions {
 		if (shotFlag) {
 			for (Shot s : shot) {
 				s.step();
-				if(sp.isLife()&&s.isLife()&&s.hit(sp)) {
+				if (sp.isLife() && s.isLife() && s.hit(sp)) {
 					s.goDead();
 				}
 				for (BossBullet b : bossbullet) {
@@ -613,7 +618,7 @@ public class World extends JPanel implements Versions {
 					bullet = new Bullet[0];
 					protectedCover = new ProtectedCover();
 					World.RunTime = 0;
-					
+
 					bossbullet = new BossBullet[0];
 					boss = new Boss();
 					bossflag = true;
@@ -841,6 +846,7 @@ public class World extends JPanel implements Versions {
 				}
 			}
 
+			g.setFont(new Font("微软雅黑",Font.BOLD,18));
 			/* 玩家基本信息显示 */
 			g.setColor(Color.YELLOW);
 			g.drawString("当前分数：[ " + newScore + " ]", 10, 20);
@@ -879,23 +885,23 @@ public class World extends JPanel implements Versions {
 					protectedCover.goDead();
 				}
 			}
-
+			
+			g.setFont(new Font("微软雅黑",Font.BOLD,14));
 			/* 游戏信息显示 */
 			g.setColor(Color.YELLOW);
-			g.drawString("时间：[  " + new SimpleDateFormat("HH : mm : ss").format(new Date()) + "  ]",
-					World.WIDTH - 130, 20);
+			g.drawString("时间：[  " + new SimpleDateFormat("HH : mm : ss").format(new Date()) + "  ]", World.WIDTH - 160,
+					20);
 			g.setColor(Color.YELLOW);
 			g.drawString(PROJECT + " ( " + EDITION + " )", 10, World.HEIGHT - 120);
 			g.drawString("Versions " + VERSIONS, 10, World.HEIGHT - 100);
 			g.drawString("Author " + AUTHOR, 10, World.HEIGHT - 80);
 			g.drawString(COPYRIGHT, 10, World.HEIGHT - 60);
 
-
 		}
-
 		/* 显示排行榜 */
 		if (state == GAME_OVRE) { // 只在游戏结束时显示的内容
-			g.setColor(Color.DARK_GRAY);
+			g.setColor(Color.RED);
+			g.setFont(new Font("微软雅黑",Font.BOLD,20));
 			g.drawString("游戏结束，当前分数 [ " + newScore + " ] ， " + ScoreLeaderboard.getRanking(), 80, 200);
 			g.drawString("游戏历史排行榜：", 80, 260);
 			int[] tempScore = ScoreLeaderboard.getScore();
@@ -919,7 +925,6 @@ public class World extends JPanel implements Versions {
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 		frame.addKeyListener(new KeyListener() {
-
 			@Override
 			public void keyTyped(KeyEvent e) {
 			}
@@ -964,7 +969,6 @@ public class World extends JPanel implements Versions {
 				default:
 					break;
 				}
-
 			}
 
 			@Override
@@ -995,7 +999,6 @@ public class World extends JPanel implements Versions {
 					break;
 				}
 			}
-
 		});
 
 		world.action();

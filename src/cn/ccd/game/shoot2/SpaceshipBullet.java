@@ -11,13 +11,13 @@ public class SpaceshipBullet extends FlyingObject implements EnemiesHp{
 
 	public SpaceshipBullet(int x, int y) {
 		super(68, 300, x, y);
-		spleed = 3;
+		spleed = 10;
 		hp=2;
 	}
-
+	int i=0;
 	@Override
 	public void step() {
-		if (isLife())
+		if (isLife()&&i++>100)
 			this.y -= spleed;
 	}
 	@Override
