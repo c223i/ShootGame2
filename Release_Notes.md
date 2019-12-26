@@ -1,3 +1,15 @@
+# ShootGame2 1.0.0 (Beta 15)
+
+[@c223i](https://github.com/c223i),[@Laxworld](https://github.com/Laxworld)
+
+修改内容：
+
+	修改玩家界面字体大小以类型
+
+	优化测试代码
+
+
+
 # ShootGame2 1.0.0 (Beta 14)
 
 [@c223i](https://github.com/c223i),[@Laxworld](https://github.com/Laxworld),[@heavenlyking](https://github.com/heavenlyking)
