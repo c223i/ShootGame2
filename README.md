@@ -98,12 +98,4 @@
 
 没有它们就没有现在的[[ShootGame2](https://c223i.github.io/ShootGame2/)]
 
-如果有兴趣,可以查看我们的[[开发日志]](https://github.com/c223i/ShootGame2/blob/master/Release_Notes.md),顺便可以给我们提供一点建议
-
-目前,项目中细微的修改我们不会更新版本号,所以不会写入到开发日志中
-
-如需查看具体的修改细节可以在[[此处](https://github.com/c223i/ShootGame2/commits/master)]查看
-
-其实在初始版本之前还修改过好几次,没记错的话前前后后差不多有60-70次,只是从这个版本开始我们才使用GitHub版本管理工具,所以我们重置了修改次数,因此[1.0.0 (Beta 1)]是第一个版本
-
 (*/ω＼*) (*/ω＼*) (*/ω＼*)
