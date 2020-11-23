@@ -98,8 +98,6 @@
 
 没有它们就没有现在的[[ShootGame2](https://c223i.github.io/ShootGame2/)]
 
-欢迎大家访问我们的[[项目主页](https://c223i.github.io/ShootGame2/)]
-
 如果有兴趣,可以查看我们的[[开发日志]](https://github.com/c223i/ShootGame2/blob/master/Release_Notes.md),顺便可以给我们提供一点建议
 
 目前,项目中细微的修改我们不会更新版本号,所以不会写入到开发日志中
